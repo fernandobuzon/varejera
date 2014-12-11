@@ -26,9 +26,16 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<a href="<?php echo Yii::app()->createUrl('entrada/admin/');?>">Todas as aquisições</a><br>
+<a href="<?php echo Yii::app()->createUrl('entrada/admin/');?>&filtro=gratis">Produtos recebidos gratuitamente</a>
+
+<?php
+
+if (isset($_GET['filtro']) && $_GET['filtro'] == 'gratis')
+{
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'entrada-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$dataProvider,
 	'filter'=>$model,
 	'columns'=>array(
 		//'id',
@@ -69,7 +76,7 @@ $('.search-form form').submit(function(){
 			'header' => 'Pago?',
 			'filter'=>array(0=>"Não",1=>"Sim"),
 			'value' => 'Entrada::Model()->chkPg($data->id)'
-		),
+		),			
 		array(
 			'name' => 'recebido',
 			'header' => 'Recebido?',
@@ -84,4 +91,7 @@ $('.search-form form').submit(function(){
 			'class'=>'CButtonColumn',
 		),
 	),
-)); ?>
+));
+
+}
+?>

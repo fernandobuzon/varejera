@@ -121,6 +121,33 @@ class Entrada extends CActiveRecord
 		));
 	}
 
+	public function searchGratis()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+	
+		$criteria=new CDbCriteria;
+	
+		$criteria->compare('id',$this->id);
+		$criteria->compare('data',$this->data,true);
+		$criteria->compare('qtde',$this->qtde);
+		$criteria->compare('id_parceiro',$this->id_parceiro);
+		$criteria->compare('id_produto',$this->id_produto);
+		$criteria->compare('valor',$this->valor,true);
+		$criteria->compare('id_integrante',$this->id_integrante);
+		$criteria->compare('pg',$this->pg);
+		$criteria->compare('recebido',$this->recebido);
+		$criteria->compare('id_troca',$this->id_troca);
+		$criteria->compare('apagado',$this->apagado);
+		$criteria->addCondition('apagado != 1');
+		$criteria->addCondition('valor = 0');
+		$criteria->addCondition('id_troca is null');
+		$criteria->order = 'data DESC';
+	
+		return new CActiveDataProvider($this, array(
+				'criteria'=>$criteria,
+		));
+	}
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

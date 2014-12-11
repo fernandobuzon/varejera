@@ -5830,3 +5830,18 @@ in /var/www/varejera/index.php (13)
 2014/12/11 12:18:34 [warning] [application] Failed to set unsafe attribute "idIntegrante" of "Entrada".
 in /var/www/varejera/protected/controllers/EntradaController.php (142)
 in /var/www/varejera/index.php (13)
+2014/12/11 13:13:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "antrada/admin".' in /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('antrada/admin')
+#1 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/varejera/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/varejera/index.php?r=antrada/admin&filtro=gratis
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=Entrada/admin
+---
+2014/12/11 14:09:54 [warning] [application] Failed to set unsafe attribute "idIntegrante" of "Entrada".
+in /var/www/varejera/protected/controllers/EntradaController.php (142)
+in /var/www/varejera/index.php (13)
+2014/12/11 14:09:56 [warning] [application] Failed to set unsafe attribute "idIntegrante" of "Entrada".
+in /var/www/varejera/protected/controllers/EntradaController.php (142)
+in /var/www/varejera/index.php (13)

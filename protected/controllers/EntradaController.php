@@ -140,9 +140,15 @@ class EntradaController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Entrada']))
 			$model->attributes=$_GET['Entrada'];
-
+		
+		if (isset($_GET['filtro']) && $_GET['filtro'] == 'gratis')
+			$dataProvider = $model->searchGratis();
+		else
+			$dataProvider = $model->search();
+		
 		$this->render('admin',array(
-			'model'=>$model,
+				'model'=>$model,
+				'dataProvider'=>$dataProvider,
 		));
 	}
 
