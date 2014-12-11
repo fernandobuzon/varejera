@@ -5818,3 +5818,15 @@ REQUEST_URI=/varejera/index.php?r=venda/admin
 in /var/www/varejera/protected/models/Saida.php (160)
 in /var/www/varejera/protected/controllers/VendaController.php (148)
 in /var/www/varejera/index.php (13)
+2014/12/11 12:03:19 [warning] [application] Failed to set unsafe attribute "idIntegrante" of "Entrada".
+in /var/www/varejera/protected/controllers/EntradaController.php (142)
+in /var/www/varejera/index.php (13)
+2014/12/11 12:04:28 [warning] [application] Failed to set unsafe attribute "idIntegrante" of "Entrada".
+in /var/www/varejera/protected/controllers/EntradaController.php (142)
+in /var/www/varejera/index.php (13)
+2014/12/11 12:18:31 [warning] [application] Failed to set unsafe attribute "idIntegrante" of "Entrada".
+in /var/www/varejera/protected/controllers/EntradaController.php (142)
+in /var/www/varejera/index.php (13)
+2014/12/11 12:18:34 [warning] [application] Failed to set unsafe attribute "idIntegrante" of "Entrada".
+in /var/www/varejera/protected/controllers/EntradaController.php (142)
+in /var/www/varejera/index.php (13)
