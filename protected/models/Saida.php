@@ -168,8 +168,8 @@ class Saida extends CActiveRecord
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
-		$criteria->order = 'data DESC';
 		$criteria->addCondition('valor > 0');
+		$criteria->order = 'data DESC';
 	
 		return new CActiveDataProvider($this, array(
 				'criteria'=>$criteria,
@@ -195,10 +195,10 @@ class Saida extends CActiveRecord
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
+		$criteria->addCondition('valor > 0');
 		$criteria->addCondition('fiado = 1');
 		$criteria->addCondition('quitado is null');
 		$criteria->order = 'data DESC';
-		$criteria->addCondition('valor > 0');
 	
 		return new CActiveDataProvider($this, array(
 				'criteria'=>$criteria,
@@ -224,9 +224,9 @@ class Saida extends CActiveRecord
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
-		$criteria->order = 'data DESC';
 		$criteria->addCondition('valor = 0');
 		$criteria->addCondition('id_troca is null');
+		$criteria->order = 'data DESC';
 	
 		return new CActiveDataProvider($this, array(
 				'criteria'=>$criteria,

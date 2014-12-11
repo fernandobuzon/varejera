@@ -67,26 +67,6 @@
 		<?php echo $form->textField($model,'obs',array('size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'obs'); ?>
 	</div>
-
-	<!-- 
-		<div class="row">
-		<?php echo $form->labelEx($model,'id_troca'); ?>
-		<?php echo $form->textField($model,'id_troca'); ?>
-		<?php echo $form->error($model,'id_troca'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'id_consig'); ?>
-		<?php echo $form->textField($model,'id_consig'); ?>
-		<?php echo $form->error($model,'id_consig'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'apagado'); ?>
-		<?php echo $form->textField($model,'apagado'); ?>
-		<?php echo $form->error($model,'apagado'); ?>
-	</div>
-	-->
 	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
