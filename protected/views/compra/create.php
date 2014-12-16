@@ -3,16 +3,16 @@
 /* @var $model Entrada */
 
 $this->breadcrumbs=array(
-	'Entradas'=>array('index'),
-	'Create',
+	'Compras'=>array('admin'),
+	'Nova',
 );
 
 $this->menu=array(
-	array('label'=>'List Entrada', 'url'=>array('index')),
-	array('label'=>'Manage Entrada', 'url'=>array('admin')),
+	//array('label'=>'List Entrada', 'url'=>array('index')),
+	array('label'=>'Lista', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Entrada</h1>
+<h1>Nova Compra</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

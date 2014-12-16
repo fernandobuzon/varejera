@@ -137,9 +137,15 @@ class CompraController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Entrada']))
 			$model->attributes=$_GET['Entrada'];
+		
+		if (isset($_GET['fiado']) && $_GET['fiado'] == '1')
+			$dataProvider = $model->searchComprasFiado();
+		else
+			$dataProvider = $model->searchCompras();
 
 		$this->render('admin',array(
 			'model'=>$model,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 

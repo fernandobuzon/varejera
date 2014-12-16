@@ -112,7 +112,7 @@ class Entrada extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('data',$this->data,true);
+		$criteria->compare('data',($this->data ? date('Y-m-d', strtotime(str_replace('/', '-', $this->data))) : null ));
 		$criteria->compare('qtde',$this->qtde);
 		$criteria->compare('id_integrante',$this->id_integrante);
 		$criteria->compare('id_produto',$this->id_produto);
@@ -120,7 +120,7 @@ class Entrada extends CActiveRecord
 		$criteria->compare('id_parceiro',$this->id_parceiro);
 		$criteria->compare('valor',$this->valor,true);
 		$criteria->compare('fiado',$this->fiado);
-		$criteria->compare('quitado',$this->quitado,true);
+		$criteria->compare('quitado',($this->quitado ? date('Y-m-d', strtotime(str_replace('/', '-', $this->quitado))) : null ));
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('recebido',$this->recebido);
 		$criteria->compare('id_troca',$this->id_troca);
@@ -140,7 +140,7 @@ class Entrada extends CActiveRecord
 		$criteria=new CDbCriteria;
 	
 		$criteria->compare('id',$this->id);
-		$criteria->compare('data',$this->data,true);
+		$criteria->compare('data',($this->data ? date('Y-m-d', strtotime(str_replace('/', '-', $this->data))) : null ));
 		$criteria->compare('qtde',$this->qtde);
 		$criteria->compare('id_integrante',$this->id_integrante);
 		$criteria->compare('id_produto',$this->id_produto);
@@ -148,7 +148,7 @@ class Entrada extends CActiveRecord
 		$criteria->compare('id_parceiro',$this->id_parceiro);
 		$criteria->compare('valor',$this->valor,true);
 		$criteria->compare('fiado',$this->fiado);
-		$criteria->compare('quitado',$this->quitado,true);
+		$criteria->compare('quitado',($this->quitado ? date('Y-m-d', strtotime(str_replace('/', '-', $this->quitado))) : null ));
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('recebido',$this->recebido);
 		$criteria->compare('id_troca',$this->id_troca);
@@ -169,7 +169,7 @@ class Entrada extends CActiveRecord
 		$criteria=new CDbCriteria;
 	
 		$criteria->compare('id',$this->id);
-		$criteria->compare('data',$this->data,true);
+		$criteria->compare('data',($this->data ? date('Y-m-d', strtotime(str_replace('/', '-', $this->data))) : null ));
 		$criteria->compare('qtde',$this->qtde);
 		$criteria->compare('id_integrante',$this->id_integrante);
 		$criteria->compare('id_produto',$this->id_produto);
@@ -177,7 +177,7 @@ class Entrada extends CActiveRecord
 		$criteria->compare('id_parceiro',$this->id_parceiro);
 		$criteria->compare('valor',$this->valor,true);
 		$criteria->compare('fiado',$this->fiado);
-		$criteria->compare('quitado',$this->quitado,true);
+		$criteria->compare('quitado',($this->quitado ? date('Y-m-d', strtotime(str_replace('/', '-', $this->quitado))) : null ));
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('recebido',$this->recebido);
 		$criteria->compare('id_troca',$this->id_troca);
@@ -199,7 +199,7 @@ class Entrada extends CActiveRecord
 		$criteria=new CDbCriteria;
 	
 		$criteria->compare('id',$this->id);
-		$criteria->compare('data',$this->data,true);
+		$criteria->compare('data',($this->data ? date('Y-m-d', strtotime(str_replace('/', '-', $this->data))) : null ));
 		$criteria->compare('qtde',$this->qtde);
 		$criteria->compare('id_integrante',$this->id_integrante);
 		$criteria->compare('id_produto',$this->id_produto);
@@ -207,7 +207,7 @@ class Entrada extends CActiveRecord
 		$criteria->compare('id_parceiro',$this->id_parceiro);
 		$criteria->compare('valor',$this->valor,true);
 		$criteria->compare('fiado',$this->fiado);
-		$criteria->compare('quitado',$this->quitado,true);
+		$criteria->compare('quitado',($this->quitado ? date('Y-m-d', strtotime(str_replace('/', '-', $this->quitado))) : null ));
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('recebido',$this->recebido);
 		$criteria->compare('id_troca',$this->id_troca);

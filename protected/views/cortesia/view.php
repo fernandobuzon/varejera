@@ -40,10 +40,6 @@ $this->menu=array(
 			'type' => 'raw',
 			'value' => $model->idParceiro->nome
 		),
-		//'valor',
 		'obs',
-		//'id_troca',
-		//'id_consig',
-		//'apagado',
 	),
 )); ?>

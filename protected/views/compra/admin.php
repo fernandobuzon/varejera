@@ -3,13 +3,13 @@
 /* @var $model Entrada */
 
 $this->breadcrumbs=array(
-	'Entradas'=>array('index'),
-	'Manage',
+	'Compras'=>array('admin'),
+	'Lista',
 );
 
 $this->menu=array(
-	array('label'=>'List Entrada', 'url'=>array('index')),
-	array('label'=>'Create Entrada', 'url'=>array('create')),
+	//array('label'=>'List Entrada', 'url'=>array('index')),
+	array('label'=>'Nova compra', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,41 +26,49 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Entradas</h1>
-
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
-
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+<a href="<?php echo Yii::app()->createUrl('compra/admin/');?>">Todas as compras</a><br>
+<a href="<?php echo Yii::app()->createUrl('compra/admin/');?>&fiado=1">Somente compras pendentes (a pagar)</a>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'entrada-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$dataProvider,
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'data',
+		//'id',
+		array(
+			'name' => 'data',
+			'header' => 'Data',
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+				'model'=>$model,
+				'attribute'=>'data',
+				'language' => 'pt-BR',
+				'options'=>array(
+					'dateFormat'=>'dd/mm/yy'
+				)
+			), true)
+		),
+		array(
+			'name' => 'idIntegrante',
+			'header' => 'Integrante',
+			'filter'=>CHtml::listData(Integrante::model()->findAll(array('order'=>'nome')),'id','nome'),
+			'value' => '$data->idIntegrante->nome'
+		),
 		'qtde',
-		'id_integrante',
-		'id_produto',
+		array(
+			'name' => 'id_produto',
+			'header' => 'Produto',
+			'filter'=>CHtml::listData(Produto::model()->findAll(array('order'=>'nome')),'id','nome'),
+			'value' => '$data->idProduto->nome'	
+		),
 		'ocasiao',
-		/*
-		'id_parceiro',
 		'valor',
-		'fiado',
-		'quitado',
+		array(
+			'name' => 'recebido',
+			'header' => 'Recebido?',
+			'filter'=>array(0=>"Não",1=>"Sim"),
+			'value' => 'Entrada::Model()->chkRecebido($data->id)'
+		),
 		'obs',
-		'recebido',
-		'id_troca',
-		'apagado',
-		*/
 		array(
 			'class'=>'CButtonColumn',
 		),

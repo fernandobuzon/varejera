@@ -125,7 +125,7 @@ class Saida extends CActiveRecord
 		$criteria->compare('id_parceiro',$this->id_parceiro);
 		$criteria->compare('valor',$this->valor,true);
 		$criteria->compare('fiado',$this->fiado);
-		$criteria->compare('quitado',$this->quitado,true);
+		$criteria->compare('quitado',($this->quitado ? date('Y-m-d', strtotime(str_replace('/', '-', $this->quitado))) : null ));
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('id_troca',$this->id_troca);
 		$criteria->compare('id_consig',$this->id_consig);
@@ -164,7 +164,7 @@ class Saida extends CActiveRecord
 		$criteria->compare('id_parceiro',$this->id_parceiro);
 		$criteria->compare('valor',$this->valor,true);
 		$criteria->compare('fiado',$this->fiado);
-		$criteria->compare('quitado',$this->quitado,true);
+		$criteria->compare('quitado',($this->quitado ? date('Y-m-d', strtotime(str_replace('/', '-', $this->quitado))) : null ));
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
@@ -191,7 +191,7 @@ class Saida extends CActiveRecord
 		$criteria->compare('id_parceiro',$this->id_parceiro);
 		$criteria->compare('valor',$this->valor,true);
 		$criteria->compare('fiado',$this->fiado);
-		$criteria->compare('quitado',$this->quitado,true);
+		$criteria->compare('quitado',($this->quitado ? date('Y-m-d', strtotime(str_replace('/', '-', $this->quitado))) : null ));
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
@@ -220,7 +220,7 @@ class Saida extends CActiveRecord
 		$criteria->compare('id_parceiro',$this->id_parceiro);
 		$criteria->compare('valor',$this->valor,true);
 		$criteria->compare('fiado',$this->fiado);
-		$criteria->compare('quitado',$this->quitado,true);
+		$criteria->compare('quitado',($this->quitado ? date('Y-m-d', strtotime(str_replace('/', '-', $this->quitado))) : null ));
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
