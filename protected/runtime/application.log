@@ -6334,3 +6334,68 @@ Stack trace:
 REQUEST_URI=/varejera/index.php?r=historico/ajaxHistorico
 in /var/www/varejera/protected/controllers/HistoricoController.php (44)
 in /var/www/varejera/index.php (13)
+2014/12/17 18:37:10 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous. The SQL statement executed was: 
+					select p.nome as 'nome' from entrada e
+					inner join parceiro p on e.id_parceiro = p.id
+					where id = 1
+				.
+in /var/www/varejera/protected/controllers/HistoricoController.php (50)
+in /var/www/varejera/index.php (13)
+2014/12/17 18:37:10 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous. The SQL statement executed was: 
+					select p.nome as 'nome' from entrada e
+					inner join parceiro p on e.id_parceiro = p.id
+					where id = 1
+				' in /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /var/www/varejera/protected/controllers/HistoricoController.php(50): CDbCommand->queryRow()
+#2 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(49): HistoricoController->actionAjaxHistorico()
+#3 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxHistorico')
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('historico/ajaxH...')
+#8 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/varejera/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/varejera/index.php?r=historico/ajaxHistorico
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=Historico/index
+---
+2014/12/17 18:37:37 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous. The SQL statement executed was: 
+					select p.nome as 'nome' from entrada e
+					inner join parceiro p on e.id_parceiro = p.id
+					where id = 1
+				.
+in /var/www/varejera/protected/controllers/HistoricoController.php (50)
+in /var/www/varejera/index.php (13)
+2014/12/17 18:37:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous. The SQL statement executed was: 
+					select p.nome as 'nome' from entrada e
+					inner join parceiro p on e.id_parceiro = p.id
+					where id = 1
+				' in /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /var/www/varejera/protected/controllers/HistoricoController.php(50): CDbCommand->queryRow()
+#2 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(49): HistoricoController->actionAjaxHistorico()
+#3 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxHistorico')
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('historico/ajaxH...')
+#8 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/varejera/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/varejera/index.php?r=historico/ajaxHistorico
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=Historico/index
+---
+2014/12/17 18:48:36 [error] [php] Undefined variable: command2 (/var/www/varejera/protected/controllers/HistoricoController.php:50)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CController.php(286): HistoricoController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): HistoricoController->runActionWithFilters()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): HistoricoController->run()
+#3 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=historico/ajaxHistorico
+in /var/www/varejera/protected/controllers/HistoricoController.php (50)
+in /var/www/varejera/index.php (13)

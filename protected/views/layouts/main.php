@@ -71,6 +71,7 @@
 						array('label'=>'Geral', 'url'=>array('/Report/index')),
 						array('label'=>'Integrantes', 'url'=>array('/RelIntegrante/index')),
 						array('label'=>'Estoque', 'url'=>array('/Estoque/admin')),
+						array('label'=>'Hist. de Produtos', 'url'=>array('/Historico/index')),
 					), 'visible'=>!Yii::app()->user->isGuest),
 
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)

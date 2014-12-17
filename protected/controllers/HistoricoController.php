@@ -35,34 +35,51 @@ class HistoricoController extends Controller
 			");
 			$row = $command->queryAll();
 			
-			//Parceiro::model()->getname()
+			echo "<br>";
 			
 			$i = 1;
 			foreach ($row as $row)
 			{
-				//$data = date("d/m/Y", $row[data]);
-				//$data = strtotime($data);
-				//$data = date_format($data, 'd/m/Y');
-				$data = '123';
+				$valor = $row['valor'];
+				$qtde = $row['qtde'];
+				$data = date('d/m/Y', strtotime($row['data']));
 				if ($row['tipo'] == 'e')
 				{
+					$connection2 = Yii::app()->db;
+					$command2 = $connection2->createCommand("
+						select p.nome as 'nome' from parceiro p
+						inner join entrada e on p.id = e.id_parceiro
+						where e.id = 1
+					");
+					$parceiro = $command2->queryRow();
+					$parceiro = $parceiro['nome'];
+					
 					if ($row['id_troca'])
-						$tipo = 'Recebido via troca com ';
+						$inicio = "Recebido $qtde unidade(s) via troca com ";
 					elseif (!$row['id_troca'] && $row['valor'] > 0 )
-						$tipo = 'Comprado de ';
+						$inicio = "Comprado $qtde unidade(s) por $valor de ";
 					else
-						$tipo = 'Recebido gratuitamente de ';
+						$inicio = "Recebido $qtde unidade(s) gratuitamente de ";
 				}
 				elseif ($row['tipo'] == 's')
 				{
+					$connection2 = Yii::app()->db;
+					$command2 = $connection2->createCommand("
+						select p.nome as 'nome' from parceiro p
+						inner join saida s on p.id = s.id_parceiro
+						where s.id = 1
+					");
+					$parceiro = $command2->queryRow();
+					$parceiro = $parceiro['nome'];
+					
 					if ($row['id_troca'])
-						$tipo = 'Enviado através de troca para ';
+						$inicio = "Enviado $qtde unidade(s) através de troca para ";
 					elseif (!$row['id_troca'] && $row['valor'] > 0 )
-						$tipo = 'Vendido para ';
+						$inicio = "Vendido $qtde unidade(s) por $valor para ";
 					else
-						$tipo = 'Enviado gratuitamente para ';
+						$inicio = "Enviado $qtde unidade(s) gratuitamente para ";
 				}
-				echo "<b>$i. </b> $tipo $data <br>";
+				echo "<b>$i. </b> $inicio $parceiro dia $data <br>";
 				
 				$i++;
 			}
