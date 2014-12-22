@@ -2,25 +2,29 @@
 
 class HistoricoController extends Controller
 {
-	public function actionAjaxHistorico()
+
+	public function filters()
 	{
-		//$data=Produto::model()->findAll();
+		return array(
+				'accessControl', // perform access control for CRUD operations
+				'postOnly + delete', // we only allow deletion via POST request
+		);
+	}	
 	
-		//$data=CHtml::listData($data,'id','nome');
-		//foreach($data as $value=>$nome)
-		//{
-		//	echo CHtml::tag('option',
-		//			array('value'=>$value),CHtml::encode($nome),true);
-		//}
-		
-//select * from (
-//select e.data as 'data', e.id_produto as 'id_produto', e.qtde as 'qtde', e.id_troca as 'id_troca', e.valor as 'valor', 'e' as 'tipo'
-//from entrada e where e.id_produto = 1 and apagado <> 1
-//union all
-//select s.data as 'data', s.id_produto as 'id_produto', s.qtde as 'qtde', s.id_troca as 'id_troca', s.valor as 'valor', 's' as 'tipo'
-//from saida s where s.id_produto = 1 and apagado <> 1) f order by f.data,f.tipo
-		
-		
+	public function accessRules()
+	{
+		return array(
+				array('allow', // allow authenticated user to perform 'create' and 'update' actions
+						'users'=>array('@'),
+				),
+				array('deny',  // deny all users
+						'users'=>array('*'),
+				),
+		);
+	}
+	
+	public function actionAjaxHistorico()
+	{		
 		if ($_POST)
 		{
 			//echo 'tem post' . $_POST['Produto']['id'];
