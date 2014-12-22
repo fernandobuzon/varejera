@@ -42,6 +42,52 @@ $this->menu=array(
 )); ?>
 </div>
 
+
+<div class="row">
+
+<?php
+
+$form=$this->beginWidget('CActiveForm', array(
+	'id'=>'troca-form',
+	'enableAjaxValidation'=>false,
+));
+
+echo CHtml::textField('qtde', '', array('size'=>5,'maxlength'=>5,'placeholder'=>'Quantidade'));
+$modelp = new Produto;
+echo CHtml::activeDropDownList(
+		$modelp,'id',Produto::model()->listaProdutos(),array(
+				'empty'=>'Escolha o produto',
+		)
+);
+
+echo "<br>";
+echo CHtml::button('Adicionar aos ENVIADOS', array(
+	'ajax' => array(
+		'type'=>'POST',
+		'url'=>CController::createUrl('troca/AjaxTrocaEnv'),
+		'success' => 'js:function(data) { $("#saida-grid").yiiGridView("update"); }',
+	)
+));
+
+echo CHtml::button('Adicionar aos RECEBIDOS', array(
+	'ajax' => array(
+		'type'=>'POST',
+		'url'=>CController::createUrl('troca/AjaxTrocaRec'),
+		'success' => 'js:function(data) { $("#entrada-grid").yiiGridView("update"); }',
+	)
+));
+
+echo CHtml::hiddenField('data' , $model->data, array('id' => 'data'));
+echo CHtml::hiddenField('id_integrante' , $model->id_integrante, array('id' => 'id_integrante'));
+echo CHtml::hiddenField('id_parceiro' , $model->id_parceiro, array('id' => 'id_parceiro'));
+echo CHtml::hiddenField('id_troca' , $model->id, array('id' => 'id_troca'));
+
+$this->endWidget();
+
+?>
+
+</div>
+
 <div class="row">
 <?php $this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'saida-grid',
@@ -54,6 +100,15 @@ $this->menu=array(
                         'value' => '$data->idProduto->nome'
                 ),
                 'obs',
+        		array(
+        				'class'=>'CButtonColumn',
+						'template'=>'{delete}',
+						'buttons'=>array(
+							'delete'=>array(
+								'url'=>'Yii::app()->createUrl("saida/delete", array("id"=>$data->id))',
+							)
+						)
+        		),
         ),
 )); ?>
 </div>
@@ -70,6 +125,15 @@ $this->menu=array(
                         'value' => '$data->idProduto->nome'
                 ),
                 'obs',
+        		array(
+        				'class'=>'CButtonColumn',
+						'template'=>'{delete}',
+						'buttons'=>array(
+							'delete'=>array(
+								'url'=>'Yii::app()->createUrl("entrada/delete", array("id"=>$data->id, "r"=>"entrada/delete"))',
+							)
+						)
+        		),
         ),
 )); ?>
 </div>

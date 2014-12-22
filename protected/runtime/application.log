@@ -6399,3 +6399,1038 @@ Stack trace:
 REQUEST_URI=/varejera/index.php?r=historico/ajaxHistorico
 in /var/www/varejera/protected/controllers/HistoricoController.php (50)
 in /var/www/varejera/index.php (13)
+2014/12/18 16:50:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ajaxTrocaEnv".' in /var/www/yii-1.1.15.022a51/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CController.php(270): CController->missingAction('ajaxTrocaEnv')
+#1 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#2 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#3 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/varejera/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=17
+---
+2014/12/18 16:50:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ajaxTrocaEnv".' in /var/www/yii-1.1.15.022a51/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CController.php(270): CController->missingAction('ajaxTrocaEnv')
+#1 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#2 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#3 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/varejera/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=17
+---
+2014/12/18 18:09:02 [error] [php] strpos() expects parameter 1 to be string, array given (/var/www/yii-1.1.15.022a51/framework/web/helpers/CHtml.php:2477)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/helpers/CHtml.php(1801): resolveNameID()
+#1 /var/www/varejera/protected/views/troca/view.php(61): activeDropDownList()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(126): require()
+#3 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(95): TrocaController->renderInternal()
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(869): TrocaController->renderFile()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(782): TrocaController->renderPartial()
+#6 /var/www/varejera/protected/controllers/TrocaController.php(56): TrocaController->render()
+#7 unknown(0): TrocaController->actionView()
+#8 /var/www/yii-1.1.15.022a51/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#9 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams()
+#11 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#12 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#14 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#15 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#16 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#17 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#18 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#19 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/view&id=20
+in /var/www/varejera/protected/views/troca/view.php (61)
+in /var/www/varejera/protected/controllers/TrocaController.php (56)
+in /var/www/varejera/index.php (13)
+2014/12/18 18:14:50 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=20
+---
+2014/12/18 18:15:01 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=20
+---
+2014/12/18 18:15:22 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=20
+---
+2014/12/18 18:16:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ajaxTrocaRec".' in /var/www/yii-1.1.15.022a51/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CController.php(270): CController->missingAction('ajaxTrocaRec')
+#1 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaRec')
+#2 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#3 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/varejera/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaRec
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=20
+---
+2014/12/18 18:21:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 18:21:55 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 18:22:06 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 18:24:33 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:06:57 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:06:59 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:07:00 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:07:00 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:07:01 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:07:01 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:07:01 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:07:01 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:07:02 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:08:34 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:20:29 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:23:30 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:23:54 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/yii-1.1.15.022a51/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#9 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#10 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /var/www/varejera/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:24:07 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=site/login
+---
+2014/12/18 19:25:33 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:25:45 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:25:59 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=20
+---
+2014/12/18 19:26:50 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=18
+---
+2014/12/18 19:27:05 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('ajaxTrocaEnv')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/ajaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/ajaxTrocaEnv
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=20
+---
+2014/12/18 19:47:25 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/18 19:48:16 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/18 19:50:08 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:04:36 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:06:09 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:07:05 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:08:11 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:08:45 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:08:50 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:12:56 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:13:51 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:14:53 [error] [php] Undefined index: Produto['id'] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:16:01 [error] [php] Undefined index: Produto[id] (/var/www/varejera/protected/controllers/TrocaController.php:187)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (187)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:30:08 [error] [php] Undefined variable: model (/var/www/varejera/protected/controllers/TrocaController.php:192)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (192)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:31:30 [error] [php] Undefined variable: model (/var/www/varejera/protected/controllers/TrocaController.php:192)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (192)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:31:57 [error] [php] Array to string conversion (/var/www/varejera/protected/controllers/TrocaController.php:192)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (192)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:46:52 [error] [php] Array to string conversion (/var/www/varejera/protected/controllers/TrocaController.php:188)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (188)
+in /var/www/varejera/index.php (13)
+2014/12/22 12:47:53 [error] [php] Array to string conversion (/var/www/varejera/protected/controllers/TrocaController.php:194)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (194)
+in /var/www/varejera/index.php (13)
+2014/12/22 13:22:07 [error] [exception.CException] exception 'CException' with message 'Property "CGridView.pagination" is not defined.' in /var/www/yii-1.1.15.022a51/framework/base/CComponent.php:173
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CWidgetFactory.php(161): CComponent->__set('pagination', Array)
+#1 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(TrocaController), 'zii.widgets.gri...', Array)
+#2 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#3 /var/www/varejera/protected/views/troca/view.php(107): CBaseController->widget('zii.widgets.gri...', Array)
+#4 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(126): require('/var/www/vareje...')
+#5 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/vareje...', Array, true)
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(869): CBaseController->renderFile('/var/www/vareje...', Array, true)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#8 /var/www/varejera/protected/controllers/TrocaController.php(56): CController->render('view', Array)
+#9 [internal function]: TrocaController->actionView('17')
+#10 /var/www/yii-1.1.15.022a51/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(TrocaController), Array)
+#11 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(TrocaController), Object(ReflectionMethod), Array)
+#12 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#13 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#15 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#19 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('view')
+#21 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/view')
+#22 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#23 /var/www/varejera/index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/varejera/index.php?r=troca/view&id=17
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=Troca/admin
+---
+2014/12/22 13:23:19 [error] [exception.CException] exception 'CException' with message 'Property "CGridView.pagination" is not defined.' in /var/www/yii-1.1.15.022a51/framework/base/CComponent.php:173
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CWidgetFactory.php(161): CComponent->__set('pagination', Array)
+#1 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(TrocaController), 'zii.widgets.gri...', Array)
+#2 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#3 /var/www/varejera/protected/views/troca/view.php(109): CBaseController->widget('zii.widgets.gri...', Array)
+#4 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(126): require('/var/www/vareje...')
+#5 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/vareje...', Array, true)
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(869): CBaseController->renderFile('/var/www/vareje...', Array, true)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#8 /var/www/varejera/protected/controllers/TrocaController.php(56): CController->render('view', Array)
+#9 [internal function]: TrocaController->actionView('17')
+#10 /var/www/yii-1.1.15.022a51/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(TrocaController), Array)
+#11 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(TrocaController), Object(ReflectionMethod), Array)
+#12 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#13 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#15 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#19 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('view')
+#21 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/view')
+#22 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#23 /var/www/varejera/index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/varejera/index.php?r=troca/view&id=17
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=Troca/admin
+---
+2014/12/22 13:35:13 [error] [php] Undefined variable: model (/var/www/varejera/protected/controllers/TrocaController.php:195)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (195)
+in /var/www/varejera/index.php (13)
+2014/12/22 13:35:35 [error] [php] Undefined variable: model (/var/www/varejera/protected/controllers/TrocaController.php:195)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaEnv
+in /var/www/varejera/protected/controllers/TrocaController.php (195)
+in /var/www/varejera/index.php (13)
+2014/12/22 14:21:29 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('AjaxTrocaRec')
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/AjaxTroca...')
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/varejera/index.php?r=troca/AjaxTrocaRec
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=16
+---
+2014/12/22 14:28:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /var/www/varejera/protected/controllers/TrocaController.php:160
+Stack trace:
+#0 /var/www/varejera/protected/controllers/TrocaController.php(55): TrocaController->loadModel('93')
+#1 [internal function]: TrocaController->actionView('93')
+#2 /var/www/yii-1.1.15.022a51/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(TrocaController), Array)
+#3 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(TrocaController), Object(ReflectionMethod), Array)
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('view')
+#13 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/view')
+#14 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/varejera/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/varejera/index.php?r=troca/view&id=93
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=16
+---
+2014/12/22 14:28:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /var/www/varejera/protected/controllers/TrocaController.php:160
+Stack trace:
+#0 /var/www/varejera/protected/controllers/TrocaController.php(114): TrocaController->loadModel('154')
+#1 [internal function]: TrocaController->actionDelete('154')
+#2 /var/www/yii-1.1.15.022a51/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(TrocaController), Array)
+#3 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(TrocaController), Object(ReflectionMethod), Array)
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1116): CFilterChain->run()
+#7 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#8 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#14 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('delete')
+#16 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/delete')
+#17 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/varejera/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/varejera/index.php?ajax=saida-grid&id=154&r=troca%2Fdelete
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=16
+---
+2014/12/22 17:35:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /var/www/varejera/protected/controllers/TrocaController.php:160
+Stack trace:
+#0 /var/www/varejera/protected/controllers/TrocaController.php(114): TrocaController->loadModel('154')
+#1 [internal function]: TrocaController->actionDelete('154')
+#2 /var/www/yii-1.1.15.022a51/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(TrocaController), Array)
+#3 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(TrocaController), Object(ReflectionMethod), Array)
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1116): CFilterChain->run()
+#7 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#8 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#14 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('delete')
+#16 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/delete')
+#17 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/varejera/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/varejera/index.php?ajax=saida-grid&id=154&r=troca%2Fdelete
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=16
+---
+2014/12/22 17:58:32 [error] [php] Use of undefined constant id - assumed 'id' (/var/www/yii-1.1.15.022a51/framework/base/CComponent.php(612) : eval()'d code:1)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/zii/widgets/grid/CButtonColumn.php(319): CButtonColumn->renderButton()
+#1 /var/www/yii-1.1.15.022a51/framework/zii/widgets/grid/CGridColumn.php(151): CButtonColumn->renderDataCellContent()
+#2 /var/www/yii-1.1.15.022a51/framework/zii/widgets/grid/CGridView.php(616): CButtonColumn->renderDataCell()
+#3 /var/www/yii-1.1.15.022a51/framework/zii/widgets/grid/CGridView.php(572): CGridView->renderTableRow()
+#4 /var/www/yii-1.1.15.022a51/framework/zii/widgets/grid/CGridView.php(482): CGridView->renderTableBody()
+#5 /var/www/yii-1.1.15.022a51/framework/zii/widgets/CBaseListView.php(167): CGridView->renderItems()
+#6 unknown(0): CGridView->renderSection()
+#7 /var/www/yii-1.1.15.022a51/framework/zii/widgets/CBaseListView.php(150): preg_replace_callback()
+#8 /var/www/yii-1.1.15.022a51/framework/zii/widgets/CBaseListView.php(135): CGridView->renderContent()
+#9 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(173): CGridView->run()
+#10 /var/www/varejera/protected/views/troca/view.php(113): TrocaController->widget()
+#11 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(126): require()
+#12 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(95): TrocaController->renderInternal()
+#13 /var/www/yii-1.1.15.022a51/framework/web/CController.php(869): TrocaController->renderFile()
+#14 /var/www/yii-1.1.15.022a51/framework/web/CController.php(782): TrocaController->renderPartial()
+#15 /var/www/varejera/protected/controllers/TrocaController.php(56): TrocaController->render()
+#16 unknown(0): TrocaController->actionView()
+#17 /var/www/yii-1.1.15.022a51/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#18 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#19 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams()
+#20 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TrocaController->runAction()
+#21 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#23 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TrocaController->filterAccessControl()
+#24 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#25 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#26 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TrocaController->runActionWithFilters()
+#27 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TrocaController->run()
+#28 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#29 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=troca/view&id=16
+in /var/www/varejera/protected/views/troca/view.php (113)
+in /var/www/varejera/protected/controllers/TrocaController.php (56)
+in /var/www/varejera/index.php (13)
+2014/12/22 18:03:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /var/www/varejera/protected/controllers/TrocaController.php:160
+Stack trace:
+#0 /var/www/varejera/protected/controllers/TrocaController.php(114): TrocaController->loadModel('111')
+#1 [internal function]: TrocaController->actionDelete('111')
+#2 /var/www/yii-1.1.15.022a51/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(TrocaController), Array)
+#3 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(TrocaController), Object(ReflectionMethod), Array)
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1116): CFilterChain->run()
+#7 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#8 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#14 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('delete')
+#16 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('troca/delete')
+#17 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/varejera/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/varejera/index.php?ajax=entrada-grid&id=111&r=troca%2Fdelete
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=troca/view&id=16
+---

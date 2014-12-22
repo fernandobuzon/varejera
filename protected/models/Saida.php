@@ -263,9 +263,13 @@ class Saida extends CActiveRecord
 	{
 		$criteria=new CDbCriteria;
 		$criteria->compare('id_troca',$id);
+		$criteria->addCondition('apagado != 1');
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+				'pagination' => array(
+				'pageSize' => 100,
+			),
 		));
 	}
 }

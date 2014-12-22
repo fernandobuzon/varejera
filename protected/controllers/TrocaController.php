@@ -1,7 +1,7 @@
 <?php
 
 class TrocaController extends Controller
-{
+{	
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -28,15 +28,15 @@ class TrocaController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'AjaxTrocaEnv', 'AjaxTrocaRec'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'AjaxTrocaEnv', 'AjaxTrocaRec'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'AjaxTrocaEnv', 'AjaxTrocaRec'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -172,5 +172,39 @@ class TrocaController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+	
+	public function actionAjaxTrocaRec()
+	{
+		$modelE=new Entrada;
+		
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+				
+		$modelE->data = $_POST['data'];
+		$modelE->qtde = $_POST['qtde'];
+		$modelE->id_integrante = $_POST['id_integrante'];
+		$modelE->id_produto = $_POST['Produto']['id'];
+		$modelE->id_parceiro = $_POST['id_parceiro'];
+		$modelE->id_troca = $_POST['id_troca'];
+		
+		$modelE->save();
+	}
+	
+	public function actionAjaxTrocaEnv()
+	{
+		$modelS=new Saida;
+	
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+	
+		$modelS->data = $_POST['data'];
+		$modelS->qtde = $_POST['qtde'];
+		$modelS->id_integrante = $_POST['id_integrante'];
+		$modelS->id_produto = $_POST['Produto']['id'];
+		$modelS->id_parceiro = $_POST['id_parceiro'];
+		$modelS->id_troca = $_POST['id_troca'];
+	
+		$modelS->save();
 	}
 }
