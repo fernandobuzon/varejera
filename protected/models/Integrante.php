@@ -127,4 +127,13 @@ class Integrante extends CActiveRecord
 		else
 			return null;
 	}
+	
+	public function chkId()
+	{
+		$model = Integrante::model()->findByAttributes(
+  			array('nome'=>Yii::app()->user->getId()),
+			array('condition'=>'apagado != 1')
+		);
+		return $model->id;
+	}
 }

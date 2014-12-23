@@ -18,6 +18,8 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+	
+	<?php echo CHtml::hiddenField('Entrada[id_integrante]', Integrante::model()->chkId()); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'data'); ?>
@@ -32,12 +34,6 @@
 		<?php echo $form->error($model,'data'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'id_integrante'); ?>
-		<?php echo CHtml::activeDropDownList($model,'id_integrante',Integrante::model()->listaIntegrantes(),array('empty'=>'Escolha o integrante')); ?>
-		<?php echo $form->error($model,'id_integrante'); ?>
-	</div>
-	
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_parceiro'); ?>
 		<?php echo CHtml::activeDropDownList($model,'id_parceiro',Parceiro::model()->listaParceiros(),array('empty'=>'Escolha o parceiro')); ?>
