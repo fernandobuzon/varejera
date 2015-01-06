@@ -8,7 +8,6 @@
  * @property string $data
  * @property integer $id_despesa
  * @property integer $id_integrante
- * @property integer $id_conta
  * @property string $valor
  * @property integer $pg
  * @property integer $id_saida
@@ -17,7 +16,6 @@
  *
  * The followings are the available model relations:
  * @property Saida $idSaida
- * @property Conta $idConta
  * @property Despesa $idDespesa
  * @property Integrante $idIntegrante
  */
@@ -39,13 +37,13 @@ class MovDespesa extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('data, id_despesa, id_integrante, id_conta', 'required'),
-			array('id_despesa, id_integrante, id_conta, pg, id_saida, apagado', 'numerical', 'integerOnly'=>true),
+			array('data, id_despesa, id_integrante', 'required'),
+			array('id_despesa, id_integrante, pg, id_saida, apagado', 'numerical', 'integerOnly'=>true),
 			array('valor', 'length', 'max'=>11),
 			array('obs', 'length', 'max'=>240),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, data, id_despesa, id_integrante, id_conta, valor, pg, id_saida, obs, apagado', 'safe', 'on'=>'search'),
+			array('id, data, id_despesa, id_integrante, valor, pg, id_saida, obs, apagado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,7 +56,6 @@ class MovDespesa extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'idSaida' => array(self::BELONGS_TO, 'Saida', 'id_saida'),
-			'idConta' => array(self::BELONGS_TO, 'Conta', 'id_conta'),
 			'idDespesa' => array(self::BELONGS_TO, 'Despesa', 'id_despesa'),
 			'idIntegrante' => array(self::BELONGS_TO, 'Integrante', 'id_integrante'),
 		);
@@ -74,7 +71,6 @@ class MovDespesa extends CActiveRecord
 			'data' => 'Data',
 			'id_despesa' => 'Id Despesa',
 			'id_integrante' => 'Id Integrante',
-			'id_conta' => 'Id Conta',
 			'valor' => 'Valor',
 			'pg' => 'Pg',
 			'id_saida' => 'Id Saida',
@@ -105,7 +101,6 @@ class MovDespesa extends CActiveRecord
 		$criteria->compare('data',$this->data,true);
 		$criteria->compare('id_despesa',$this->id_despesa);
 		$criteria->compare('id_integrante',$this->id_integrante);
-		$criteria->compare('id_conta',$this->id_conta);
 		$criteria->compare('valor',$this->valor,true);
 		$criteria->compare('pg',$this->pg);
 		$criteria->compare('id_saida',$this->id_saida);

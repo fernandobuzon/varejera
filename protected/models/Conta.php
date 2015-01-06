@@ -96,6 +96,12 @@ class Conta extends CActiveRecord
 		$criteria->order = 'nome';
 		$criteria->addCondition('apagado != 1');
 
+		$listaIds = CHtml::listData(Integrante::model()->findAll(), 'nome', 'id_conta');
+		foreach ($listaIds as $idconta)
+			$idsContas[] = $idconta;
+
+		$criteria->addNotInCondition('id',$idsContas);
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -112,9 +118,36 @@ class Conta extends CActiveRecord
 		return parent::model($className);
 	}
 
-	public function listaContas()
+	public function chkConta()
 	{
-			$listaContas = CHtml::listData(Conta::model()->findAll(), 'id', 'nome');
+		$id_integrante = Integrante::model()->chkId();
+		$model = Integrante::model()->findByPk($id_integrante);
+		return $model->id_conta;
+	}
+	
+	public function chkContaByNome($nome)
+	{
+		$model = Conta::model()->findByAttributes(
+				array('nome'=>$nome),
+				array('condition'=>'apagado != 1')
+		);
+		return $model->id;
+	}
+	
+	public function listaContasO()
+	{
+			$listaIds = CHtml::listData(Integrante::model()->findAll(array('condition'=>'apagado != 1')), 'nome', 'id_conta');
+			foreach ($listaIds as $idconta)
+			{
+				if ($idconta != Conta::model()->chkConta())
+					$idsContas[] = $idconta;
+			}
+
+			$criteria = new CDbCriteria();
+			$criteria->addNotInCondition('id',$idsContas);
+			$criteria->addCondition('apagado != 1');
+		
+			$listaContas = CHtml::listData(Conta::model()->findAll($criteria), 'id', 'nome');
 			if($listaContas)
 				return $listaContas;
 			else

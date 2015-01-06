@@ -27,7 +27,8 @@ $('.search-form form').submit(function(){
 ?>
 
 <a href="<?php echo Yii::app()->createUrl('estoque/admin/');?>&listOp=all">Todos os produtos</a><br>
-<a href="<?php echo Yii::app()->createUrl('estoque/admin/');?>&listOp=estoque">Somente produtos em estoque</a>
+<a href="<?php echo Yii::app()->createUrl('estoque/admin/');?>&listOp=estoque">Somente produtos em estoque</a><br>
+<a href="<?php echo Yii::app()->createUrl('estoque/admin/');?>&listOp=aguardando">Somente produtos aguardando chegar</a>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'estoque-grid',

@@ -24,6 +24,9 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
+
+echo "conta:" . Conta::model()->chkConta();
+
 ?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(

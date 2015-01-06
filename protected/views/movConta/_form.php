@@ -36,13 +36,23 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_conta_orig'); ?>
-		<?php echo CHtml::activeDropDownList($model,'id_conta_orig',Conta::model()->listaContas(),array('empty'=>'Escolha a conta de origem')); ?>
+		<?php echo CHtml::activeDropDownList($model,'id_conta_orig',Conta::model()->listaContasO(),array('empty'=>'Selecione a conta de origem',
+			'ajax'=>array(
+				'type'=>'POST',
+				'url'=>CController::createUrl('movConta/IdsDestinos'),
+				'update'=>'#id_conta_dest',
+				'data'=>array('id_conta_orig'=>'js:this.value')
+			)
+		)); ?>
 		<?php echo $form->error($model,'id_conta_orig'); ?>
 	</div>
 
 	<div class="row">
+	<?php 
+	
+	?>
 		<?php echo $form->labelEx($model,'id_conta_dest'); ?>
-		<?php echo CHtml::activeDropDownList($model,'id_conta_dest',Conta::model()->listaContas(),array('empty'=>'Escolha a conta de destino')); ?>
+		<?php echo CHtml::DropDownList('id_conta_dest','', array(), array('prompt'=>'Selecione primeiro a conta de origem')); ?>
 		<?php echo $form->error($model,'id_conta_dest'); ?>
 	</div>
 

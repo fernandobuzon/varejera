@@ -41,12 +41,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'id_conta'); ?>
-		<?php echo CHtml::activeDropDownList($model,'id_conta',Conta::model()->listaContas(),array('empty'=>'Escolha a conta')); ?>
-		<?php echo $form->error($model,'id_conta'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'valor'); ?>
 		<?php echo $form->textField($model,'valor',array('size'=>11,'maxlength'=>11)); ?>
 		<?php echo $form->error($model,'valor'); ?>

@@ -165,4 +165,24 @@ class MovContaController extends Controller
 			Yii::app()->end();
 		}
 	}
+	
+	public function actionIdsDestinos()
+	{
+		$listaContas = CHtml::listData(Conta::model()->findAll(array('condition'=>'apagado != 1')), 'nome', 'id');
+		foreach ($listaContas as $idconta)
+		{
+			if ($idconta != $_POST['id_conta_orig'])
+				$idsContas[] = $idconta;
+		}
+		
+		$criteria = new CDbCriteria();
+		$criteria->addInCondition('id',$idsContas);
+			
+		$data=Conta::model()->findAll($criteria);
+		$data=CHtml::listData($data,'id','nome');
+			
+		echo "<option value=''>Selecione a conta de Destino</option>";
+		foreach($data as $value=>$nome)
+			echo CHtml::tag('option', array('value'=>$value),CHtml::encode($nome),true);
+	}
 }

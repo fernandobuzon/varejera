@@ -56,12 +56,6 @@ $('.search-form form').submit(function(){
 			'filter'=>CHtml::listData(Despesa::model()->findAll(array('order'=>'nome')),'id','nome'),
 			'value' => '$data->idDespesa->nome'
 		),
-		array(
-			'name' => 'id_conta',
-			'header' => 'Conta',
-			'filter'=>CHtml::listData(Conta::model()->findAll(array('order'=>'nome')),'id','nome'),
-			'value' => '$data->idConta->nome'
-		),
 		'valor',
 		array(
 			'name' => 'pg',

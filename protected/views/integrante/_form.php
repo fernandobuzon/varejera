@@ -25,12 +25,6 @@
 		<?php echo $form->error($model,'nome'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'id_conta'); ?>
-		<?php echo CHtml::activeDropDownList($model,'id_conta',Conta::model()->listaContas(),array('empty'=>'Escolha a conta')); ?>
-		<?php echo $form->error($model,'id_conta'); ?> 
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

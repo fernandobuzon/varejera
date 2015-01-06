@@ -40,3 +40,14 @@ $('.search-form form').submit(function(){
 		),
 	),
 )); ?>
+
+<?php 
+//$listaIds = CHtml::listData(Integrante::model()->findAll(), 'nome', 'id_conta');
+//foreach ($listaIds as $idconta)
+//	$idsContas[] = $idconta;
+
+//echo $idconta[0];
+
+//if (in_array("$this->id", $idsContas))
+//	$criteria->addCondition('apagado = 9');
+?>

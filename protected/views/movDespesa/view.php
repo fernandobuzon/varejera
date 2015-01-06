@@ -35,11 +35,6 @@ $this->menu=array(
 			'type' => 'raw',
 			'value' => $model->idIntegrante->nome
 		),
-		array(
-			'label' => 'Conta',
-			'type' => 'raw',
-			'value' => $model->idConta->nome
-		),
 		'valor',
 		array(
 			'label' => 'Pago?',

@@ -102,22 +102,55 @@ class Estoque extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 		
-		//$criteria->select = 'id, id_tipo, id_banda, nome';
-		$criteria->select = array(
-  			new CDbExpression('id'),
-			new CDbExpression('id_tipo'),
-			new CDbExpression('id_banda'),
-			new CDbExpression('nome'),
-			new CDbExpression('COALESCE(((select sum(ent.qtde) from entrada ent where ent.id_produto = t.id) - (select sum(sda.qtde) from saida sda where sda.id_produto = t.id)),0) as qtde'),
-		);
-		$criteria->compare('id',$this->id);
-		$criteria->compare('id_tipo',$this->id_tipo);
-		$criteria->compare('id_banda',$this->id_banda);
-		$criteria->compare('nome',$this->nome,true);
-		$criteria->order = 'nome';
-		
 		if ($param == 'estoque')
+		{
+			$criteria->select = array(
+  				new CDbExpression('id'),
+				new CDbExpression('id_tipo'),
+				new CDbExpression('id_banda'),
+				new CDbExpression('nome'),
+				new CDbExpression('COALESCE(((select sum(ent.qtde) from entrada ent where ent.id_produto = t.id and ent.recebido = 1) - (select sum(sda.qtde) from saida sda where sda.id_produto = t.id)),0) as qtde'),
+			);
+			$criteria->compare('id',$this->id);
+			$criteria->compare('id_tipo',$this->id_tipo);
+			$criteria->compare('id_banda',$this->id_banda);
+			$criteria->compare('nome',$this->nome,true);
+			$criteria->order = 'nome';
 			$criteria->having = 'qtde > 0';
+		}
+		else if ($param == 'all')
+		{
+			$criteria->select = array(
+					new CDbExpression('id'),
+					new CDbExpression('id_tipo'),
+					new CDbExpression('id_banda'),
+					new CDbExpression('nome'),
+					new CDbExpression('COALESCE(((select sum(ent.qtde) from entrada ent where ent.id_produto = t.id) - (select sum(sda.qtde) from saida sda where sda.id_produto = t.id)),0) as qtde'),
+			);
+			$criteria->compare('id',$this->id);
+			$criteria->compare('id_tipo',$this->id_tipo);
+			$criteria->compare('id_banda',$this->id_banda);
+			$criteria->compare('nome',$this->nome,true);
+			$criteria->order = 'nome';
+		}
+		else if ($param == 'aguardando')
+		{
+			$criteria->select = array(
+					new CDbExpression('t.id'),
+					new CDbExpression('id_tipo'),
+					new CDbExpression('id_banda'),
+					new CDbExpression('nome'),
+					new CDbExpression('COALESCE((select sum(ent.qtde) from entrada ent where ent.id_produto = t.id and ent.recebido=0),0) as qtde'),
+			);
+			$criteria->join = 'JOIN entrada e ON t.id = e.id_produto';
+			$criteria->condition = 'e.recebido = 0';
+			$criteria->compare('id',$this->id);
+			$criteria->compare('id_tipo',$this->id_tipo);
+			$criteria->compare('id_banda',$this->id_banda);
+			$criteria->compare('nome',$this->nome,true);
+			$criteria->group = 'id';
+			$criteria->order = 'nome';
+		}
 		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

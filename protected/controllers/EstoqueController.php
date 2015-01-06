@@ -50,6 +50,8 @@ class EstoqueController extends Controller
 
 		if (isset($_GET['listOp']) && $_GET['listOp'] == 'all')
 			$dataProvider = $model->search('all');
+		else if (isset($_GET['listOp']) && $_GET['listOp'] == 'aguardando')
+			$dataProvider = $model->search('aguardando');
 		else
 			$dataProvider = $model->search('estoque');
 		

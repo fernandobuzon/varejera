@@ -61,11 +61,18 @@ class IntegranteController extends Controller
 
 		if(isset($_POST['Integrante']))
 		{
+			$modelC=new Conta;
+			$modelC->nome = "Caixa " . $_POST['Integrante']['nome'];
+			$modelC->save();
+			
+			$id_conta = Conta::model()->chkContaByNome($modelC->nome);
+			
 			$model->attributes=$_POST['Integrante'];
+			$model->id_conta = $id_conta;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
-
+		
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -106,6 +113,11 @@ class IntegranteController extends Controller
 		$model = $this->loadModel($id);
 		$model->apagado = 1;
 		$model->save();
+		
+		$nomeC = "Caixa " . $model->nome;
+		$modelC = Conta::model()->findByPk(Conta::model()->chkContaByNome($nomeC));
+		$modelC->apagado = 1;
+		$modelC->save();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))

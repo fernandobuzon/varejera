@@ -33,11 +33,11 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		//'id',
 		'nome',
-		array(
-			'name' => 'id_conta',
-			'header' => 'Conta pessoal',
-			'value' => '$data->idConta->nome'
-		),
+		//array(
+		//	'name' => 'id_conta',
+		//	'header' => 'Conta pessoal',
+		//	'value' => '$data->idConta->nome'
+		//),
 		//'apagado',
 		array(
 			'class'=>'CButtonColumn',
