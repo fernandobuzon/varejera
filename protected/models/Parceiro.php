@@ -105,8 +105,8 @@ class Parceiro extends CActiveRecord
 		$criteria->compare('cep',$this->cep);
 		$criteria->compare('distro',$this->distro);
 		$criteria->compare('apagado',$this->apagado);
-		$criteria->order = 'nome';
 		$criteria->addCondition('apagado != 1');
+		$criteria->order = 'nome';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

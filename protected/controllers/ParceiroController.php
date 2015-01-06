@@ -27,7 +27,7 @@ class ParceiroController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+			array('allow', // allow authenticated user
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users

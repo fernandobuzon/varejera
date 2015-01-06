@@ -38,6 +38,7 @@
 				array('label'=>'Cadastros', 'url'=>'',
 					'items'=>array(
 						array('label'=>'Parceiros', 'url'=>array('/Parceiro/admin')),
+						array('label'=>'Patrocinadores', 'url'=>array('/Patrocinador/admin')),
 						array('label'=>'Contas', 'url'=>array('/Conta/admin')),
 						array('label'=>'Despesas', 'url'=>array('/Despesa/admin')),
 						array('label'=>'Gêneros', 'url'=>array('/Genero/admin')),
@@ -59,6 +60,12 @@
 						array('label'=>'Baixas', 'url'=>array('/Baixa/admin')),
 					), 'visible'=>!Yii::app()->user->isGuest),
 
+				array('label'=>'Atividades', 'url'=>'',
+					'items'=>array(
+						array('label'=>'Eventos', 'url'=>array('/Evento/admin')),
+						array('label'=>'Gravações', 'url'=>''),
+					), 'visible'=>!Yii::app()->user->isGuest),
+					
 				array('label'=>'Financeiro', 'url'=>'',
 					'items'=>array(
 						array('label'=>'Mov. Contas', 'url'=>array('/MovConta/admin')),
