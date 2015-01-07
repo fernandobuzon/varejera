@@ -35,7 +35,7 @@ CREATE TABLE `baixa` (
   KEY `fk_baixa_integrante` (`id_integrante`),
   CONSTRAINT `fk_baixa_integrante` FOREIGN KEY (`id_integrante`) REFERENCES `integrante` (`id`),
   CONSTRAINT `fk_baixa_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Baixas';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Baixas';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `conta` (
   `detalhes` varchar(240) DEFAULT NULL,
   `apagado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COMMENT='Contas Financeiras';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COMMENT='Contas Financeiras';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,11 +127,14 @@ CREATE TABLE `entrada` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `data` date NOT NULL,
   `qtde` int(11) NOT NULL,
-  `id_parceiro` int(11) NOT NULL,
-  `id_produto` int(11) NOT NULL,
-  `valor` decimal(11,2) NOT NULL DEFAULT '0.00',
   `id_integrante` int(11) NOT NULL,
-  `pg` tinyint(1) NOT NULL DEFAULT '1',
+  `id_produto` int(11) NOT NULL,
+  `ocasiao` varchar(200) DEFAULT NULL,
+  `id_parceiro` int(11) NOT NULL,
+  `valor` decimal(11,2) NOT NULL DEFAULT '0.00',
+  `fiado` tinyint(1) NOT NULL DEFAULT '0',
+  `quitado` date DEFAULT NULL,
+  `obs` varchar(300) DEFAULT NULL,
   `recebido` tinyint(1) NOT NULL DEFAULT '0',
   `id_troca` int(11) DEFAULT NULL,
   `apagado` tinyint(1) NOT NULL DEFAULT '0',
@@ -140,11 +143,31 @@ CREATE TABLE `entrada` (
   KEY `fk_entrada_integrante` (`id_integrante`),
   KEY `fk_entrada_produto` (`id_produto`),
   KEY `fk_entrada_troca` (`id_troca`),
-  CONSTRAINT `fk_entrada_troca` FOREIGN KEY (`id_troca`) REFERENCES `troca` (`id`),
   CONSTRAINT `fk_entrada_integrante` FOREIGN KEY (`id_integrante`) REFERENCES `integrante` (`id`),
   CONSTRAINT `fk_entrada_parceiro` FOREIGN KEY (`id_parceiro`) REFERENCES `parceiro` (`id`),
-  CONSTRAINT `fk_entrada_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1 PACK_KEYS=0 COMMENT='Entrada de produtos';
+  CONSTRAINT `fk_entrada_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`),
+  CONSTRAINT `fk_entrada_troca` FOREIGN KEY (`id_troca`) REFERENCES `troca` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1 PACK_KEYS=0 COMMENT='Entrada de produtos';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `evento`
+--
+
+DROP TABLE IF EXISTS `evento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `evento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(240) NOT NULL,
+  `data` date NOT NULL,
+  `local` varchar(240) NOT NULL,
+  `horario` varchar(15) NOT NULL,
+  `ingresso` decimal(11,2) NOT NULL DEFAULT '0.00',
+  `concluido` tinyint(4) NOT NULL DEFAULT '0',
+  `apagado` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Eventos';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +200,7 @@ CREATE TABLE `integrante` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `fk_integrante_conta` (`id_conta`),
   CONSTRAINT `fk_integrante_conta` FOREIGN KEY (`id_conta`) REFERENCES `conta` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 AVG_ROW_LENGTH=20 COMMENT='Integrantes da Distro/Banda';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 AVG_ROW_LENGTH=20 COMMENT='Integrantes da Distro/Banda';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +245,7 @@ CREATE TABLE `mov_conta` (
   CONSTRAINT `fk_mov_conta_dest` FOREIGN KEY (`id_conta_dest`) REFERENCES `conta` (`id`),
   CONSTRAINT `fk_mov_conta_integrante` FOREIGN KEY (`id_integrante`) REFERENCES `integrante` (`id`),
   CONSTRAINT `fk_mov_conta_orig` FOREIGN KEY (`id_conta_orig`) REFERENCES `conta` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 PACK_KEYS=0 COMMENT='Movimentação entre contas';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 PACK_KEYS=0 COMMENT='Movimentação entre contas';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,7 +260,6 @@ CREATE TABLE `mov_despesa` (
   `data` date NOT NULL,
   `id_despesa` int(11) NOT NULL,
   `id_integrante` int(11) NOT NULL,
-  `id_conta` int(11) NOT NULL,
   `valor` decimal(11,2) NOT NULL DEFAULT '0.00',
   `pg` tinyint(1) NOT NULL DEFAULT '1',
   `id_saida` int(11) DEFAULT NULL,
@@ -246,9 +268,7 @@ CREATE TABLE `mov_despesa` (
   PRIMARY KEY (`id`),
   KEY `fk_mov_despesa_despesa` (`id_despesa`),
   KEY `fk_mov_despesa_integrante` (`id_integrante`),
-  KEY `fk_mov_despesa_conta` (`id_conta`),
   KEY `fk_mov_despesa_saida` (`id_saida`),
-  CONSTRAINT `fk_mov_despesa_conta` FOREIGN KEY (`id_conta`) REFERENCES `conta` (`id`),
   CONSTRAINT `fk_mov_despesa_despesa` FOREIGN KEY (`id_despesa`) REFERENCES `despesa` (`id`),
   CONSTRAINT `fk_mov_despesa_integrante` FOREIGN KEY (`id_integrante`) REFERENCES `integrante` (`id`),
   CONSTRAINT `fk_mov_despesa_saida` FOREIGN KEY (`id_saida`) REFERENCES `saida` (`id`)
@@ -268,11 +288,55 @@ CREATE TABLE `parceiro` (
   `contato` varchar(240) DEFAULT NULL,
   `endereco` varchar(240) DEFAULT NULL,
   `cidade` varchar(50) DEFAULT NULL,
-  `cep` int(11) DEFAULT NULL,
+  `cep` varchar(10) DEFAULT NULL,
   `distro` int(1) NOT NULL DEFAULT '0',
   `apagado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COMMENT='Parceiros de negociações';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `patrocinador`
+--
+
+DROP TABLE IF EXISTS `patrocinador`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `patrocinador` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(240) NOT NULL,
+  `contato` varchar(240) DEFAULT NULL,
+  `link` varchar(240) DEFAULT NULL,
+  `endereco` varchar(240) DEFAULT NULL,
+  `cidade` varchar(50) DEFAULT NULL,
+  `cep` varchar(10) DEFAULT NULL,
+  `apagado` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COMMENT='Patrocinadores';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `patrocinio`
+--
+
+DROP TABLE IF EXISTS `patrocinio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `patrocinio` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data` date NOT NULL,
+  `id_integrante` int(11) NOT NULL,
+  `id_patrocinador` int(11) NOT NULL,
+  `valor` decimal(11,2) NOT NULL DEFAULT '0.00',
+  `pg` tinyint(4) NOT NULL DEFAULT '0',
+  `obs` varchar(1000) NOT NULL,
+  `apagado` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `fk_patrocinio_integrante` (`id_integrante`),
+  KEY `fk_patrocinio_patrocinador` (`id_patrocinador`),
+  CONSTRAINT `fk_patrocinio_patrocinador` FOREIGN KEY (`id_patrocinador`) REFERENCES `patrocinador` (`id`),
+  CONSTRAINT `fk_patrocinio_integrante` FOREIGN KEY (`id_integrante`) REFERENCES `integrante` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Patrocínios';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,6 +384,25 @@ CREATE TABLE `retirada` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `reuniao`
+--
+
+DROP TABLE IF EXISTS `reuniao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reuniao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data` date NOT NULL,
+  `ata` varchar(10000) NOT NULL,
+  `id_evento` int(11) NOT NULL,
+  `apagado` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `fk_reuniao_evento` (`id_evento`),
+  CONSTRAINT `fk_reuniao_evento` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='Reuniões';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `saida`
 --
 
@@ -330,7 +413,7 @@ CREATE TABLE `saida` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `data` date NOT NULL,
   `qtde` int(11) NOT NULL DEFAULT '1',
-  `id_integrante` int(2) NOT NULL,
+  `id_integrante` int(11) NOT NULL,
   `id_produto` int(11) NOT NULL,
   `ocasiao` varchar(200) DEFAULT NULL,
   `id_parceiro` int(11) NOT NULL,
@@ -352,7 +435,7 @@ CREATE TABLE `saida` (
   CONSTRAINT `fk_saida_parceiro` FOREIGN KEY (`id_parceiro`) REFERENCES `parceiro` (`id`),
   CONSTRAINT `fk_saida_produto` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`),
   CONSTRAINT `fk_saida_troca` FOREIGN KEY (`id_troca`) REFERENCES `troca` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=latin1 AVG_ROW_LENGTH=106 COMMENT='Saída de produtos';
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=latin1 AVG_ROW_LENGTH=106 COMMENT='Saída de produtos';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -390,7 +473,7 @@ CREATE TABLE `troca` (
   KEY `fk_troca_parceiro` (`id_parceiro`),
   CONSTRAINT `fk_troca_integrante` FOREIGN KEY (`id_integrante`) REFERENCES `integrante` (`id`),
   CONSTRAINT `fk_troca_parceiro` FOREIGN KEY (`id_parceiro`) REFERENCES `parceiro` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1 COMMENT='Troca de produtos';
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1 COMMENT='Troca de produtos';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -402,4 +485,4 @@ CREATE TABLE `troca` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-11 12:28:01
+-- Dump completed on 2015-01-07 16:48:07
