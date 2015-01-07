@@ -1,26 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "evento".
+ * This is the model class for table "reuniao".
  *
- * The followings are the available columns in table 'evento':
+ * The followings are the available columns in table 'reuniao':
  * @property integer $id
- * @property string $nome
  * @property string $data
- * @property string $local
- * @property string $horario
- * @property double $ingresso
- * @property integer $concluido
+ * @property string $ata
+ * @property integer $id_evento
  * @property integer $apagado
+ *
+ * The followings are the available model relations:
+ * @property Evento $idEvento
  */
-class Evento extends CActiveRecord
+class Reuniao extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'evento';
+		return 'reuniao';
 	}
 
 	/**
@@ -31,14 +31,12 @@ class Evento extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nome, data, local, horario', 'required'),
-			array('concluido, apagado', 'numerical', 'integerOnly'=>true),
-			array('ingresso', 'numerical'),
-			array('nome, local', 'length', 'max'=>240),
-			array('horario', 'length', 'max'=>15),
+			array('data, ata, id_evento', 'required'),
+			array('id_evento, apagado', 'numerical', 'integerOnly'=>true),
+			array('ata', 'length', 'max'=>10000),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nome, data, local, horario, ingresso, concluido, apagado', 'safe', 'on'=>'search'),
+			array('id, data, ata, id_evento, apagado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,6 +48,7 @@ class Evento extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'idEvento' => array(self::BELONGS_TO, 'Evento', 'id_evento'),
 		);
 	}
 
@@ -60,12 +59,9 @@ class Evento extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nome' => 'Nome',
 			'data' => 'Data',
-			'local' => 'Local',
-			'horario' => 'Horario',
-			'ingresso' => 'Ingresso',
-			'concluido' => 'Concluido',
+			'ata' => 'Ata',
+			'id_evento' => 'Id Evento',
 			'apagado' => 'Apagado',
 		);
 	}
@@ -89,38 +85,32 @@ class Evento extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('nome',$this->nome,true);
 		$criteria->compare('data',$this->data,true);
-		$criteria->compare('local',$this->local,true);
-		$criteria->compare('horario',$this->horario,true);
-		$criteria->compare('ingresso',$this->ingresso);
-		$criteria->compare('concluido',$this->concluido);
+		$criteria->compare('ata',$this->ata,true);
+		$criteria->compare('id_evento',$this->id_evento);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
-		$criteria->order = 'nome';
+		$criteria->order = 'data';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 	
-	public function searchEventosEmAberto()
+	public function searchByIdEvento($id_evento)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 	
 		$criteria=new CDbCriteria;
 	
 		$criteria->compare('id',$this->id);
-		$criteria->compare('nome',$this->nome,true);
 		$criteria->compare('data',$this->data,true);
-		$criteria->compare('local',$this->local,true);
-		$criteria->compare('horario',$this->horario,true);
-		$criteria->compare('ingresso',$this->ingresso);
-		$criteria->compare('concluido',$this->concluido);
+		$criteria->compare('ata',$this->ata,true);
+		$criteria->compare('id_evento',$this->id_evento);
 		$criteria->compare('apagado',$this->apagado);
-		$criteria->addCondition('concluido = 0');
+		$criteria->compare('id_evento',$id_evento);
 		$criteria->addCondition('apagado != 1');
-		$criteria->order = 'nome';
+		$criteria->order = 'data';
 	
 		return new CActiveDataProvider($this, array(
 				'criteria'=>$criteria,
@@ -131,26 +121,11 @@ class Evento extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Evento the static model class
+	 * @return Reuniao the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
-	}
-	
-	public function chkConcluido($id)
-	{
-		$model = Evento::model()->findByPk($id);
-		if($model->concluido == 1)
-			echo 'Sim';
-		else
-			echo 'Não';
-	}
-	
-	public function chkEvento($id)
-	{
-		$model = Evento::model()->findByPk($id);
-		return $model->nome;
 	}
 	
 	protected function afterFind(){
