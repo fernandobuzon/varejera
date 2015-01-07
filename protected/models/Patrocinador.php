@@ -114,4 +114,13 @@ class Patrocinador extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	public function listaPatrocinadores()
+	{
+		$listaPatrocinadores = CHtml::listData(Patrocinador::model()->findAll(), 'id', 'nome');
+		if($listaPatrocinadores)
+			return $listaPatrocinadores;
+		else
+			return null;
+	}
 }

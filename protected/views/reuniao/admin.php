@@ -2,8 +2,6 @@
 /* @var $this ReuniaoController */
 /* @var $model Reuniao */
 
-//$evento = Evento::model()->chkEvento($_GET['id_evento']);
-
 $this->breadcrumbs=array(
 	'Eventos'=>array('Evento/admin'),
 	Evento::model()->chkEvento($_GET['id_evento'])=>array('Evento/view','id'=>$_GET['id_evento']),
@@ -36,7 +34,18 @@ $('.search-form form').submit(function(){
 	'filter'=>$model,
 	'columns'=>array(
 		//'id',
-		'data',
+		array(
+			'name' => 'data',
+			'header' => 'Data',
+			'filter'=>$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+        		'model'=>$model,
+        		'attribute'=>'data',
+				'language' => 'pt-BR',
+				'options'=>array(
+					'dateFormat'=>'dd/mm/yy'
+				)	
+    		), true)
+		),
 		array(
 				'name' => 'ata',
 				'header' => 'ATA',

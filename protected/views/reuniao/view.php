@@ -4,17 +4,17 @@
 
 $this->breadcrumbs=array(
 	'Eventos'=>array('Evento/admin'),
-	Evento::model()->chkEvento($_GET['id_evento'])=>array('Evento/view','id'=>$_GET['id_evento']),
-	'Reuniões'=>array('admin','id_evento'=>$_GET['id_evento']),
+	$model->idEvento->nome=>array('Evento/view','id'=>$model->id_evento),
+	'Reuniões'=>array('admin','id_evento'=>$model->id_evento),
 	$model->data,
 );
 
 $this->menu=array(
 	//array('label'=>'List Reuniao', 'url'=>array('index')),
-	array('label'=>'Nova Reunião', 'url'=>array('create','id_evento'=>$_GET['id_evento'])),
-	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->id,'id_evento'=>$_GET['id_evento'])),
+	array('label'=>'Nova Reunião', 'url'=>array('create','id_evento'=>$model->id_evento)),
+	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->id,'id_evento'=>$model->id_evento)),
 	array('label'=>'Apagar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Lista', 'url'=>array('admin','id_evento'=>$_GET['id_evento'])),
+	array('label'=>'Lista', 'url'=>array('admin','id_evento'=>$model->id_evento)),
 );
 ?>
 
