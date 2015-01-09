@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 ?>
 
 <?php
-	$integrantes = Integrante::model()->findAll();
+	$integrantes = Integrante::model()->findAll(array('condition'=>'apagado != 1'));
 		
 	$i = 0;
 	foreach ($integrantes as $integrante)

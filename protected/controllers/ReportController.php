@@ -134,8 +134,8 @@ class ReportController extends Controller
 		$geral['balanco'] = array('label'=>'Balanço sem invest.','value'=>$val);
 
 		// S A L D O S
-		$contas = Conta::model()->findAll();
-		$integrantes = Integrante::model()->findAll();
+		$contas = Conta::model()->findAll(array('condition'=>'apagado != 1'));
+		$integrantes = Integrante::model()->findAll(array('condition'=>'apagado != 1'));
 		foreach ($contas as $conta)
 		{
 			$integranteID = "";

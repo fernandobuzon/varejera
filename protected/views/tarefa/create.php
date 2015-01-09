@@ -1,19 +1,20 @@
 <?php
-/* @var $this PatrocinioController */
-/* @var $model Patrocinio */
+/* @var $this TarefaController */
+/* @var $model Tarefa */
 
 $this->breadcrumbs=array(
+	'Eventos'=>array('Evento/admin'),
 	Evento::model()->chkEvento($_GET['id_evento'])=>array('Evento/view','id'=>$_GET['id_evento']),
-	'Patrocínios'=>array('admin','id_evento'=>$_GET['id_evento']),
-	'Novo',
+	'Tarefas'=>array('admin','id_evento'=>$_GET['id_evento']),
+	'Nova',
 );
 
 $this->menu=array(
-	//array('label'=>'List Patrocinio', 'url'=>array('index')),
+	//array('label'=>'List Tarefa', 'url'=>array('index')),
 	array('label'=>'Lista', 'url'=>array('admin','id_evento'=>$_GET['id_evento'])),
 );
 ?>
 
-<h1>Novo Patrocínio <?php echo Evento::model()->chkEvento($_GET['id_evento']) ?></h1>
+<h1>Nova Tarefa</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
