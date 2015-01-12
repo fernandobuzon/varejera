@@ -38,6 +38,18 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'valor_pg'); ?>
+		<?php echo $form->textField($model,'valor_pg',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->error($model,'valor_pg'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'valor_total'); ?>
+		<?php echo $form->textField($model,'valor_total',array('size'=>11,'maxlength'=>11)); ?>
+		<?php echo $form->error($model,'valor_total'); ?>
+	</div>
+	
+	<div class="row">
 		<?php echo $form->labelEx($model,'conclusao'); ?>
 		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
         	'model'=>$model,

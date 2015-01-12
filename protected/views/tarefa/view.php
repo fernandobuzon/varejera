@@ -36,6 +36,8 @@ $this->menu=array(
 			'value'=>nl2br($model->andamento),
 			'type' => 'html',
 		),
+		'valor_pg',
+		'valor_total',
 		'conclusao',
 		//'apagado',
 	),

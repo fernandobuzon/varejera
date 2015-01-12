@@ -61,6 +61,7 @@ $('.search-form form').submit(function(){
 				)
 			), true)
 		),
+		'valor_total',
 		//'apagado',
 		array(
 			'class'=>'CButtonColumn',

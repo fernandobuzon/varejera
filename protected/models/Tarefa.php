@@ -10,6 +10,8 @@
  * @property integer $id_evento
  * @property string $andamento
  * @property string $conclusao
+ * @property string $valor_pg
+ * @property string $valor_total
  * @property integer $apagado
  *
  * The followings are the available model relations:
@@ -38,10 +40,11 @@ class Tarefa extends CActiveRecord
 			array('id_integrante, id_evento, apagado', 'numerical', 'integerOnly'=>true),
 			array('nome', 'length', 'max'=>240),
 			array('andamento', 'length', 'max'=>10000),
+			array('valor_pg, valor_total', 'length', 'max'=>11),
 			array('conclusao', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nome, id_integrante, id_evento, andamento, conclusao, apagado', 'safe', 'on'=>'search'),
+			array('id, nome, id_integrante, id_evento, andamento, conclusao, valor_pg, valor_total, apagado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,10 +69,12 @@ class Tarefa extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'nome' => 'Nome',
-			'id_integrante' => 'Id Integrante',
-			'id_evento' => 'Id Evento',
+			'id_integrante' => 'Responsável',
+			'id_evento' => 'Evento',
 			'andamento' => 'Andamento',
-			'conclusao' => 'Conclusao',
+			'conclusao' => 'Conclusão',
+			'valor_pg' => 'Valor Pago',
+			'valor_total' => 'Valor Total',
 			'apagado' => 'Apagado',
 		);
 	}
@@ -98,6 +103,8 @@ class Tarefa extends CActiveRecord
 		$criteria->compare('id_evento',$this->id_evento);
 		$criteria->compare('andamento',$this->andamento,true);
 		$criteria->compare('conclusao',$this->conclusao,true);
+		$criteria->compare('valor_pg',$this->valor_pg,true);
+		$criteria->compare('valor_total',$this->valor_total,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
 		$criteria->order = 'conclusao';
@@ -119,6 +126,8 @@ class Tarefa extends CActiveRecord
 		$criteria->compare('id_evento',$this->id_evento);
 		$criteria->compare('andamento',$this->andamento,true);
 		$criteria->compare('conclusao',$this->conclusao,true);
+		$criteria->compare('valor_pg',$this->valor_pg,true);
+		$criteria->compare('valor_total',$this->valor_total,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->compare('id_evento',$id_evento);
 		$criteria->addCondition('apagado != 1');

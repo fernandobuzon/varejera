@@ -46,7 +46,7 @@ $this->menu=array(
 <?php echo CHtml::link('Reuniões',array('reuniao/admin','id_evento'=>"$model->id")); ?> -
 <?php echo CHtml::link('Patrocínios',array('patrocinio/admin','id_evento'=>"$model->id")); ?> -
 <?php echo CHtml::link('Tarefas',array('tarefa/admin','id_evento'=>"$model->id")); ?> -
-
-Bandas - Bilheteria - Receitas - Gastos
+Bandas - Bilheteria - Receitas - 
+<?php echo CHtml::link('Resumo',array('resumo/index','id_evento'=>"$model->id")); ?>
 </center>
 </div>
