@@ -1,24 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "tipo".
+ * This is the model class for table "estudio".
  *
- * The followings are the available columns in table 'tipo':
+ * The followings are the available columns in table 'estudio':
  * @property integer $id
  * @property string $nome
+ * @property string $contato
  * @property integer $apagado
- *
- * The followings are the available model relations:
- * @property Produto[] $produtos
  */
-class Tipo extends CActiveRecord
+class Estudio extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'tipo';
+		return 'estudio';
 	}
 
 	/**
@@ -31,10 +29,10 @@ class Tipo extends CActiveRecord
 		return array(
 			array('nome', 'required'),
 			array('apagado', 'numerical', 'integerOnly'=>true),
-			array('nome', 'length', 'max'=>240),
+			array('nome, contato', 'length', 'max'=>240),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nome, apagado', 'safe', 'on'=>'search'),
+			array('id, nome, contato, apagado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,7 +44,6 @@ class Tipo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'produtos' => array(self::HAS_MANY, 'Produto', 'id_tipo'),
 		);
 	}
 
@@ -58,6 +55,7 @@ class Tipo extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'nome' => 'Nome',
+			'contato' => 'Contato',
 			'apagado' => 'Apagado',
 		);
 	}
@@ -82,6 +80,7 @@ class Tipo extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nome',$this->nome,true);
+		$criteria->compare('contato',$this->contato,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
 		$criteria->order = 'nome';
@@ -95,18 +94,18 @@ class Tipo extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Tipo the static model class
+	 * @return Estudio the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
 	
-	public function listaTipos()
+	public function listaEstudios()
 	{
-		$listaTipos = CHtml::listData(Tipo::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')), 'id', 'nome');
-		if($listaTipos)
-			return $listaTipos;
+		$listaEstudios = CHtml::listData(Estudio::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')), 'id', 'nome');
+		if($listaEstudios)
+			return $listaEstudios;
 		else
 			return null;
 	}

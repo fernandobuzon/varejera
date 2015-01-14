@@ -37,15 +37,16 @@
 
 				array('label'=>'Cadastros', 'url'=>'',
 					'items'=>array(
-						array('label'=>'Parceiros', 'url'=>array('/Parceiro/admin')),
-						array('label'=>'Patrocinadores', 'url'=>array('/Patrocinador/admin')),
+						array('label'=>'Bandas', 'url'=>array('/Banda/admin')),
 						array('label'=>'Contas', 'url'=>array('/Conta/admin')),
 						array('label'=>'Despesas', 'url'=>array('/Despesa/admin')),
+						array('label'=>'Estúdios', 'url'=>array('/Estudio/admin')),
 						array('label'=>'Gêneros', 'url'=>array('/Genero/admin')),
-						array('label'=>'Bandas', 'url'=>array('/Banda/admin')),
-						array('label'=>'Tipo de Produtos', 'url'=>array('/Tipo/admin')),
-						array('label'=>'Produtos', 'url'=>array('/Produto/admin')),
 						array('label'=>'Integrantes', 'url'=>array('/Integrante/admin')),
+						array('label'=>'Parceiros', 'url'=>array('/Parceiro/admin')),
+						array('label'=>'Patrocinadores', 'url'=>array('/Patrocinador/admin')),
+						array('label'=>'Produtos', 'url'=>array('/Produto/admin')),
+						array('label'=>'Tipo de Produtos', 'url'=>array('/Tipo/admin')),
 					), 'visible'=>!Yii::app()->user->isGuest),
 
 				array('label'=>'Mov. de Produtos', 'url'=>'',

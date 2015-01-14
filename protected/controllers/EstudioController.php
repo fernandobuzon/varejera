@@ -1,7 +1,7 @@
 <?php
 
-class TrocaController extends Controller
-{	
+class EstudioController extends Controller
+{
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -35,7 +35,6 @@ class TrocaController extends Controller
 			),
 		);
 	}
-	
 
 	/**
 	 * Displays a particular model.
@@ -54,14 +53,14 @@ class TrocaController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Troca;
+		$model=new Estudio;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Troca']))
+		if(isset($_POST['Estudio']))
 		{
-			$model->attributes=$_POST['Troca'];
+			$model->attributes=$_POST['Estudio'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -83,9 +82,9 @@ class TrocaController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Troca']))
+		if(isset($_POST['Estudio']))
 		{
-			$model->attributes=$_POST['Troca'];
+			$model->attributes=$_POST['Estudio'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -106,9 +105,6 @@ class TrocaController extends Controller
 		$model = $this->loadModel($id);
 		$model->apagado = 1;
 		$model->save();
-		
-		Yii::app()->db->createCommand("update saida set apagado=1 where id_troca=$id")->execute();
-		Yii::app()->db->createCommand("update entrada set apagado=1 where id_troca=$id")->execute();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -120,7 +116,7 @@ class TrocaController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Troca');
+		$dataProvider=new CActiveDataProvider('Estudio');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -131,10 +127,10 @@ class TrocaController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Troca('search');
+		$model=new Estudio('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Troca']))
-			$model->attributes=$_GET['Troca'];
+		if(isset($_GET['Estudio']))
+			$model->attributes=$_GET['Estudio'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -145,12 +141,12 @@ class TrocaController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Troca the loaded model
+	 * @return Estudio the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Troca::model()->findByPk($id);
+		$model=Estudio::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -158,48 +154,14 @@ class TrocaController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Troca $model the model to be validated
+	 * @param Estudio $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='troca-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='estudio-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}
-	
-	public function actionAjaxTrocaRec()
-	{
-		$modelE=new Entrada;
-		
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-				
-		$modelE->data = $_POST['data'];
-		$modelE->qtde = $_POST['qtde'];
-		$modelE->id_integrante = $_POST['id_integrante'];
-		$modelE->id_produto = $_POST['Produto']['id'];
-		$modelE->id_parceiro = $_POST['id_parceiro'];
-		$modelE->id_troca = $_POST['id_troca'];
-		
-		$modelE->save();
-	}
-	
-	public function actionAjaxTrocaEnv()
-	{
-		$modelS=new Saida;
-	
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-	
-		$modelS->data = $_POST['data'];
-		$modelS->qtde = $_POST['qtde'];
-		$modelS->id_integrante = $_POST['id_integrante'];
-		$modelS->id_produto = $_POST['Produto']['id'];
-		$modelS->id_parceiro = $_POST['id_parceiro'];
-		$modelS->id_troca = $_POST['id_troca'];
-	
-		$modelS->save();
 	}
 }

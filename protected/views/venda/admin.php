@@ -52,6 +52,12 @@ $('.search-form form').submit(function(){
 			'filter'=>CHtml::listData(Integrante::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'id','nome'),
 			'value' => '$data->idIntegrante->nome'
 		),
+		array(
+			'name' => 'id_parceiro',
+			'header' => 'Comprador',
+			'filter'=>CHtml::listData(Parceiro::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'id','nome'),
+			'value' => '$data->idParceiro->nome'
+		),
 		'qtde',
 		array(
 			'name' => 'id_produto',
@@ -69,7 +75,7 @@ $('.search-form form').submit(function(){
 		),
 		'quitado',
 		*/
-		'obs',
+		//'obs',
 		/*
 		'id_troca',
 		'id_consig',

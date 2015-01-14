@@ -39,7 +39,7 @@ $('.search-form form').submit(function(){
 		'data',
 		'local',
 		//'horario',
-		'ingresso',
+		//'ingresso',
 		//'concluido',
 		//'apagado',
 		array(

@@ -9,7 +9,7 @@
  * @property string $contato
  * @property string $endereco
  * @property string $cidade
- * @property integer $cep
+ * @property string $cep
  * @property integer $distro
  * @property integer $apagado
  *
@@ -38,9 +38,10 @@ class Parceiro extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('nome', 'required'),
-			array('cep, distro, apagado', 'numerical', 'integerOnly'=>true),
+			array('distro, apagado', 'numerical', 'integerOnly'=>true),
 			array('nome, contato, endereco', 'length', 'max'=>240),
 			array('cidade', 'length', 'max'=>50),
+			array('cep', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, nome, contato, endereco, cidade, cep, distro, apagado', 'safe', 'on'=>'search'),
@@ -102,7 +103,7 @@ class Parceiro extends CActiveRecord
 		$criteria->compare('contato',$this->contato,true);
 		$criteria->compare('endereco',$this->endereco,true);
 		$criteria->compare('cidade',$this->cidade,true);
-		$criteria->compare('cep',$this->cep);
+		$criteria->compare('cep',$this->cep,true);
 		$criteria->compare('distro',$this->distro);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
@@ -139,7 +140,7 @@ class Parceiro extends CActiveRecord
 	
 	public function listaParceiros()
 	{
-		$listaParceiros = CHtml::listData(Parceiro::model()->findAll(), 'id', 'nome');
+		$listaParceiros = CHtml::listData(Parceiro::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')), 'id', 'nome');
 		if($listaParceiros)
 			return $listaParceiros;
 		else

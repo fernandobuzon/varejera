@@ -20,6 +20,7 @@
 	<?php echo $form->errorSummary($model); ?>
 	
 	<?php echo CHtml::hiddenField('Patrocinio[id_integrante]', Integrante::model()->chkId()); ?>
+	<?php echo CHtml::hiddenField('Patrocinio[id_evento]', $_GET['id_evento']); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'data'); ?>
