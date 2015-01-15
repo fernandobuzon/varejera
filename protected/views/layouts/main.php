@@ -51,14 +51,15 @@
 
 				array('label'=>'Mov. de Produtos', 'url'=>'',
 					'items'=>array(
+						array('label'=>'Baixas', 'url'=>array('/Baixa/admin')),
+						array('label'=>'Compras', 'url'=>array('/Compra/admin')),
+						array('label'=>'Consignações', 'url'=>array('/Consig/admin')),
+						array('label'=>'Cortesias (envio)', 'url'=>array('/Cortesia/admin')),
+						array('label'=>'Cortesias (receb)', 'url'=>array('/Gratis/admin')),
+						array('label'=>'Entre integrantes', 'url'=>array('/MovProduto/admin')),
+						array('label'=>'Retiradas', 'url'=>array('/Retirada/admin')),
 						array('label'=>'Trocas', 'url'=>array('/Troca/admin')),
 						array('label'=>'Vendas', 'url'=>array('/Venda/admin')),
-						array('label'=>'Cortesias (envio)', 'url'=>array('/Cortesia/admin')),
-						array('label'=>'Consignações', 'url'=>array('/Consig/admin')),
-						array('label'=>'Compras', 'url'=>array('/Compra/admin')),
-						array('label'=>'Cortesias (receb)', 'url'=>array('/Gratis/admin')),
-						array('label'=>'Retiradas', 'url'=>array('/Retirada/admin')),
-						array('label'=>'Baixas', 'url'=>array('/Baixa/admin')),
 					), 'visible'=>!Yii::app()->user->isGuest),
 
 				array('label'=>'Atividades', 'url'=>'',

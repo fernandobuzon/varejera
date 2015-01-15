@@ -121,7 +121,17 @@ class Integrante extends CActiveRecord
 	
 	public function listaIntegrantes()
 	{
-		$listaIntegrantes = CHtml::listData(Integrante::model()->findAll(), 'id', 'nome');
+		$listaIntegrantes = CHtml::listData(Integrante::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')), 'id', 'nome');
+		if($listaIntegrantes)
+			return $listaIntegrantes;
+		else
+			return null;
+	}
+
+	public function listaIntegrantesEx()
+	{
+		$id_integrante = Integrante::model()->chkId();
+		$listaIntegrantes = CHtml::listData(Integrante::model()->findAll(array('condition'=>"apagado != 1 and id != $id_integrante",'order'=>'nome')), 'id', 'nome');
 		if($listaIntegrantes)
 			return $listaIntegrantes;
 		else

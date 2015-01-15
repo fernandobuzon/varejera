@@ -1,15 +1,15 @@
 <?php
-/* @var $this MovContaController */
-/* @var $model MovConta */
+/* @var $this MovProdutoController */
+/* @var $model MovProduto */
 
 $this->breadcrumbs=array(
-	'Mov. Contas'=>array('admin'),
+	'Mov. entre integrantes'=>array('admin'),
 	'Lista',
 );
 
 $this->menu=array(
-	//array('label'=>'List MovConta', 'url'=>array('index')),
-	array('label'=>'Nova Movimentação', 'url'=>array('create')),
+	//array('label'=>'List MovProduto', 'url'=>array('index')),
+	array('label'=>'Nova movimentação', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,17 +18,16 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#mov-conta-grid').yiiGridView('update', {
+	$('#mov-produto-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
 });
 ");
-
 ?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'mov-conta-grid',
+	'id'=>'mov-produto-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
@@ -37,13 +36,13 @@ $('.search-form form').submit(function(){
 			'name' => 'data',
 			'header' => 'Data',
 			'filter'=>$this->widget('zii.widgets.jui.CJuiDatePicker', array(
-        		'model'=>$model,
-        		'attribute'=>'data',
+				'model'=>$model,
+				'attribute'=>'data',
 				'language' => 'pt-BR',
 				'options'=>array(
 					'dateFormat'=>'dd/mm/yy'
-				)	
-    		), true)
+				)
+			), true)
 		),
 		array(
 			'name' => 'id_integrante',
@@ -52,21 +51,19 @@ $('.search-form form').submit(function(){
 			'value' => '$data->idIntegrante->nome'
 		),
 		array(
-			'name' => 'id_conta_orig',
-			'header' => 'Origem',
-			'filter'=>CHtml::listData(Conta::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'id','nome'),
-			'value' => '$data->idContaOrig->nome'
+			'name' => 'id_integrante_dest',
+			'header' => 'Receptor',
+			'filter'=>CHtml::listData(Integrante::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'id','nome'),
+			'value' => '$data->idIntegranteDest->nome'
 		),
+		'qtde',
 		array(
-			'name' => 'id_conta_dest',
-			'header' => 'Destino',
-			'filter'=>CHtml::listData(Conta::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'id','nome'),
-			'value' => '$data->idContaDest->nome'
+			'name' => 'id_produto',
+			'header' => 'Produto',
+			'filter'=>CHtml::listData(Produto::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'id','nome'),
+			'value' => '$data->idProduto->nome'
 		),
-		'valor',
-		/*
-		'apagado',
-		*/
+		//'apagado',
 		array(
 			'class'=>'CButtonColumn',
 		),

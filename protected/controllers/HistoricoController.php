@@ -50,8 +50,9 @@ class HistoricoController extends Controller
 					$command = $connection->createCommand("
 						select (select COALESCE(SUM(qtde),0) from entrada where id_produto = $id_produto and id_integrante = $integrante->id and apagado <> 1)
 						- (select COALESCE(SUM(qtde),0) from saida where id_produto = $id_produto and id_integrante = $integrante->id and apagado <> 1)
-						as 'estoque'
-						");
+						- (select COALESCE(SUM(qtde),0) from mov_produto where id_produto = $id_produto and id_integrante = $integrante->id and apagado <> 1)							
+						as 'estoque' 
+					");
 					$row = $command->queryRow();
 					$estoque = $row['estoque'];
 					

@@ -250,6 +250,8 @@ class Entrada extends CActiveRecord
 			$this->data=date('Y-m-d', strtotime(str_replace("/", "-", $this->data)));
 			if ($this->quitado)
 				$this->quitado=date('Y-m-d', strtotime(str_replace("/", "-", $this->quitado)));
+			else
+				$this->quitado = null;
 			return TRUE;
 		}
 		else return FALSE;

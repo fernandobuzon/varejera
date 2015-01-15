@@ -1,32 +1,30 @@
 <?php
 
 /**
- * This is the model class for table "mov_despesa".
+ * This is the model class for table "mov_produto".
  *
- * The followings are the available columns in table 'mov_despesa':
+ * The followings are the available columns in table 'mov_produto':
  * @property integer $id
  * @property string $data
- * @property integer $id_despesa
  * @property integer $id_integrante
- * @property string $valor
- * @property integer $pg
- * @property integer $id_saida
- * @property string $obs
+ * @property integer $id_integrante_dest
+ * @property integer $id_produto
+ * @property integer $qtde
  * @property integer $apagado
  *
  * The followings are the available model relations:
- * @property Saida $idSaida
- * @property Despesa $idDespesa
+ * @property Produto $idProduto
+ * @property Integrante $idIntegranteDest
  * @property Integrante $idIntegrante
  */
-class MovDespesa extends CActiveRecord
+class MovProduto extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'mov_despesa';
+		return 'mov_produto';
 	}
 
 	/**
@@ -37,13 +35,11 @@ class MovDespesa extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('data, id_despesa, id_integrante', 'required'),
-			array('id_despesa, id_integrante, pg, id_saida, apagado', 'numerical', 'integerOnly'=>true),
-			array('valor', 'length', 'max'=>11),
-			array('obs', 'length', 'max'=>240),
+			array('data, id_integrante, id_integrante_dest, id_produto, qtde', 'required'),
+			array('id_integrante, id_integrante_dest, id_produto, qtde, apagado', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, data, id_despesa, id_integrante, valor, pg, id_saida, obs, apagado', 'safe', 'on'=>'search'),
+			array('id, data, id_integrante, id_integrante_dest, apagado, id_produto, qtde', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,8 +51,8 @@ class MovDespesa extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idSaida' => array(self::BELONGS_TO, 'Saida', 'id_saida'),
-			'idDespesa' => array(self::BELONGS_TO, 'Despesa', 'id_despesa'),
+			'idProduto' => array(self::BELONGS_TO, 'Produto', 'id_produto'),
+			'idIntegranteDest' => array(self::BELONGS_TO, 'Integrante', 'id_integrante_dest'),
 			'idIntegrante' => array(self::BELONGS_TO, 'Integrante', 'id_integrante'),
 		);
 	}
@@ -69,12 +65,10 @@ class MovDespesa extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'data' => 'Data',
-			'id_despesa' => 'Despesa',
 			'id_integrante' => 'Integrante',
-			'valor' => 'Valor',
-			'pg' => 'Pg',
-			'id_saida' => 'Saída',
-			'obs' => 'Obs',
+			'id_integrante_dest' => 'Receptor',
+			'id_produto' => 'Produto',
+			'qtde' => 'Qtde.',
 			'apagado' => 'Apagado',
 		);
 	}
@@ -99,12 +93,10 @@ class MovDespesa extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('data',$this->data,true);
-		$criteria->compare('id_despesa',$this->id_despesa);
 		$criteria->compare('id_integrante',$this->id_integrante);
-		$criteria->compare('valor',$this->valor,true);
-		$criteria->compare('pg',$this->pg);
-		$criteria->compare('id_saida',$this->id_saida);
-		$criteria->compare('obs',$this->obs,true);
+		$criteria->compare('id_integrante_dest',$this->id_integrante_dest);
+		$criteria->compare('id_produto',$this->id_produto);
+		$criteria->compare('qtde',$this->qtde);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
 		$criteria->order = 'data DESC';
@@ -118,16 +110,12 @@ class MovDespesa extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return MovDespesa the static model class
+	 * @return MovProduto the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-
-	/**
-	* Custom
-	*/
 	
 	protected function afterFind(){
 		parent::afterFind();
@@ -140,14 +128,5 @@ class MovDespesa extends CActiveRecord
 			return TRUE;
 		}
 		else return FALSE;
-	}	
-	
-	public function chkPg($id)
-	{
-		$model = MovDespesa::model()->findByPk($id);
-		if($model->pg == 1)
-			echo 'Sim';
-		else
-			echo 'Não';
 	}
 }

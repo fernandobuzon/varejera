@@ -1,13 +1,13 @@
 <?php
-/* @var $this MovContaController */
-/* @var $model MovConta */
+/* @var $this MovProdutoController */
+/* @var $model MovProduto */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'mov-conta-form',
+	'id'=>'mov-produto-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -19,7 +19,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 	
-	<?php echo CHtml::hiddenField('MovConta[id_integrante]', Integrante::model()->chkId()); ?>
+	<?php echo CHtml::hiddenField('MovProduto[id_integrante]', Integrante::model()->chkId()); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'data'); ?>
@@ -35,30 +35,23 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'id_conta_orig'); ?>
-		<?php echo CHtml::activeDropDownList($model,'id_conta_orig',Conta::model()->listaContasO(),array('empty'=>'Selecione a conta de origem',
-			'ajax'=>array(
-				'type'=>'POST',
-				'url'=>CController::createUrl('movConta/IdsDestinos'),
-				'update'=>'#MovConta_id_conta_dest',
-				'data'=>array('id_conta_orig'=>'js:this.value')
-			)
-		)); ?>
-		<?php echo $form->error($model,'id_conta_orig'); ?>
+		<?php echo $form->labelEx($model,'id_integrante_dest'); ?>
+		<?php echo CHtml::activeDropDownList($model,'id_integrante_dest',Integrante::model()->listaIntegrantesEx(),array('empty'=>'Escolha o receptor')); ?>
+		<?php echo $form->error($model,'id_integrante_dest'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'id_conta_dest'); ?>
-		<?php echo CHtml::DropDownList('MovConta[id_conta_dest]','', array(), array('prompt'=>'Selecione primeiro a conta de origem')); ?>
-		<?php echo $form->error($model,'id_conta_dest'); ?>
+		<?php echo $form->labelEx($model,'id_produto'); ?>
+		<?php echo CHtml::activeDropDownList($model,'id_produto',Produto::model()->listaProdutos(),array('empty'=>'Escolha o produto')); ?>
+		<?php echo $form->error($model,'id_produto'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'valor'); ?>
-		<?php echo $form->textField($model,'valor',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'valor'); ?>
+		<?php echo $form->labelEx($model,'qtde'); ?>
+		<?php echo $form->textField($model,'qtde'); ?>
+		<?php echo $form->error($model,'qtde'); ?>
 	</div>
-
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
