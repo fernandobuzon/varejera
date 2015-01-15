@@ -27,7 +27,44 @@ class HistoricoController extends Controller
 	{		
 		if ($_POST)
 		{
+			$id_produto = $_POST['Produto']['id'];
+
 			$connection = Yii::app()->db;
+			
+			$command = $connection->createCommand("
+				select (select COALESCE(SUM(qtde),0) from entrada where id_produto = $id_produto and apagado <> 1)
+				- (select COALESCE(SUM(qtde),0) from saida where id_produto = $id_produto and apagado <> 1)
+				as 'estoque' 
+			");
+			$row = $command->queryRow();
+			$estoque = $row['estoque'];
+			echo "<br><b>Total em estoque: $estoque</b><br>";
+			
+			if ($estoque > 0)
+			{
+				$integrantes = Integrante::model()->findAll(array('condition'=>'apagado != 1'));
+				
+				$i = 0;
+				foreach ($integrantes as $integrante)
+				{
+					$command = $connection->createCommand("
+						select (select COALESCE(SUM(qtde),0) from entrada where id_produto = $id_produto and id_integrante = $integrante->id and apagado <> 1)
+						- (select COALESCE(SUM(qtde),0) from saida where id_produto = $id_produto and id_integrante = $integrante->id and apagado <> 1)
+						as 'estoque'
+						");
+					$row = $command->queryRow();
+					$estoque = $row['estoque'];
+					
+					if ($estoque > 0)
+						echo "$integrante->nome: $estoque<br>";
+					$i++;
+				}
+			}
+			else
+			{
+				echo "<br>Não disponível em estoque no momento<br>";
+			}
+			
 			$command = $connection->createCommand("
 				select * from (
 				select e.id as 'id', e.data as 'data', e.id_produto as 'id_produto', e.id_integrante as 'id_integrante', e.qtde as 'qtde', e.id_troca as 'id_troca', e.valor as 'valor', 'e' as 'tipo'

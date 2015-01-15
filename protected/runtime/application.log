@@ -11032,3 +11032,19 @@ Stack trace:
 REQUEST_URI=/varejera/index.php?r=historico/ajaxHistorico
 in /var/www/varejera/protected/controllers/HistoricoController.php (85)
 in /var/www/varejera/index.php (13)
+2015/01/15 17:51:50 [error] [php] Undefined index: value (/var/www/varejera/protected/controllers/HistoricoController.php:39)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): HistoricoController->runAction()
+#1 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): HistoricoController->filterAccessControl()
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): HistoricoController->runActionWithFilters()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): HistoricoController->run()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=historico/ajaxHistorico
+in /var/www/varejera/protected/controllers/HistoricoController.php (39)
+in /var/www/varejera/index.php (13)
