@@ -62,7 +62,7 @@ class Investimento extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'data' => 'Data',
-			'id_integrante' => 'Id Integrante',
+			'id_integrante' => 'Integrante',
 			'valor' => 'Valor',
 			'obs' => 'Obs',
 			'apagado' => 'Apagado',
@@ -94,7 +94,7 @@ class Investimento extends CActiveRecord
 		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
-		$criteria->order = 'data DESC';
+		$criteria->order = 'data desc, id_integrante';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

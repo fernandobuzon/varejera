@@ -1,26 +1,31 @@
 <?php
 
 /**
- * This is the model class for table "reuniao".
+ * This is the model class for table "gravacao".
  *
- * The followings are the available columns in table 'reuniao':
+ * The followings are the available columns in table 'gravacao':
  * @property integer $id
- * @property string $data
- * @property string $ata
- * @property integer $id_evento
+ * @property integer $id_estudio
+ * @property integer $id_banda
+ * @property string $nome
+ * @property string $data_i
+ * @property string $data_f
+ * @property string $valor
+ * @property string $obs
  * @property integer $apagado
  *
  * The followings are the available model relations:
- * @property Evento $idEvento
+ * @property Banda $idBanda
+ * @property Estudio $idEstudio
  */
-class Reuniao extends CActiveRecord
+class Gravacao extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'reuniao';
+		return 'gravacao';
 	}
 
 	/**
@@ -31,12 +36,15 @@ class Reuniao extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('data, ata, id_evento', 'required'),
-			array('id_evento, apagado', 'numerical', 'integerOnly'=>true),
-			array('ata', 'length', 'max'=>10000),
+			array('id_estudio, id_banda, nome, data_i', 'required'),
+			array('id_estudio, id_banda, apagado', 'numerical', 'integerOnly'=>true),
+			array('nome', 'length', 'max'=>240),
+			array('valor', 'length', 'max'=>11),
+			array('obs', 'length', 'max'=>10000),
+			array('data_f', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, data, ata, id_evento, apagado', 'safe', 'on'=>'search'),
+			array('id, id_estudio, id_banda, nome, data_i, data_f, valor, obs, apagado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,7 +56,8 @@ class Reuniao extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idEvento' => array(self::BELONGS_TO, 'Evento', 'id_evento'),
+			'idBanda' => array(self::BELONGS_TO, 'Banda', 'id_banda'),
+			'idEstudio' => array(self::BELONGS_TO, 'Estudio', 'id_estudio'),
 		);
 	}
 
@@ -59,9 +68,13 @@ class Reuniao extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'data' => 'Data',
-			'ata' => 'Ata',
-			'id_evento' => 'Evento',
+			'id_estudio' => 'Estúdio',
+			'id_banda' => 'Banda',
+			'nome' => 'Nome',
+			'data_i' => 'Data de início',
+			'data_f' => 'Data de conclusão',
+			'valor' => 'Valor',
+			'obs' => 'Obs.',
 			'apagado' => 'Apagado',
 		);
 	}
@@ -85,43 +98,50 @@ class Reuniao extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('data',$this->data,true);
-		$criteria->compare('ata',$this->ata,true);
-		$criteria->compare('id_evento',$this->id_evento);
+		$criteria->compare('id_estudio',$this->id_estudio);
+		$criteria->compare('id_banda',$this->id_banda);
+		$criteria->compare('nome',$this->nome,true);
+		$criteria->compare('data_i',$this->data_i,true);
+		$criteria->compare('data_f',$this->data_f,true);
+		$criteria->compare('valor',$this->valor,true);
+		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
-		$criteria->order = 'data';
+		$criteria->order = 'nome';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-	
-	public function searchByIdEvento($id_evento)
+
+	public function searchGravacoesEmAberto()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 	
 		$criteria=new CDbCriteria;
 	
 		$criteria->compare('id',$this->id);
-		$criteria->compare('data',$this->data,true);
-		$criteria->compare('ata',$this->ata,true);
-		$criteria->compare('id_evento',$this->id_evento);
+		$criteria->compare('id_estudio',$this->id_estudio);
+		$criteria->compare('id_banda',$this->id_banda);
+		$criteria->compare('nome',$this->nome,true);
+		$criteria->compare('data_i',$this->data_i,true);
+		$criteria->compare('data_f',$this->data_f,true);
+		$criteria->compare('valor',$this->valor,true);
+		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('apagado',$this->apagado);
-		$criteria->compare('id_evento',$id_evento);
+		$criteria->addCondition('data_f is null');
 		$criteria->addCondition('apagado != 1');
-		$criteria->order = 'data';
+		$criteria->order = 'nome';
 	
 		return new CActiveDataProvider($this, array(
 				'criteria'=>$criteria,
 		));
 	}
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Reuniao the static model class
+	 * @return Gravacao the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -130,12 +150,18 @@ class Reuniao extends CActiveRecord
 	
 	protected function afterFind(){
 		parent::afterFind();
-		$this->data=date('d/m/Y', strtotime(str_replace("-", "", $this->data)));
+		$this->data_i=date('d/m/Y', strtotime(str_replace("-", "", $this->data_i)));
+		if ($this->data_f)
+			$this->data_f=date('d/m/Y', strtotime(str_replace("-", "", $this->data_f)));
 	}
 	
 	protected function beforeSave(){
 		if(parent::beforeSave()){
-			$this->data=date('Y-m-d', strtotime(str_replace("/", "-", $this->data)));
+			$this->data_i=date('Y-m-d', strtotime(str_replace("/", "-", $this->data_i)));
+			if ($this->data_f)
+				$this->data_f=date('Y-m-d', strtotime(str_replace("/", "-", $this->data_f)));
+			else
+				$this->data_f=null;
 			return TRUE;
 		}
 		else return FALSE;

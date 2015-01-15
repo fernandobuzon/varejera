@@ -63,7 +63,7 @@ class Banda extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_genero' => 'Id Genero',
+			'id_genero' => 'Gênero',
 			'nome' => 'Nome',
 			'contato' => 'Contato',
 			'link' => 'Link',

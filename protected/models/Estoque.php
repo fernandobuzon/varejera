@@ -75,11 +75,11 @@ class Estoque extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_tipo' => 'Id Tipo',
-			'id_banda' => 'Id Banda',
+			'id_tipo' => 'Tipo',
+			'id_banda' => 'Banda',
 			'nome' => 'Nome',
-			'obs' => 'Obs',
-			'qtde' => 'Qtde',
+			'obs' => 'Obs.',
+			'qtde' => 'Qtde.',
 			'apagado' => 'Apagado',
 		);
 	}

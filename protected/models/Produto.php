@@ -71,10 +71,10 @@ class Produto extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_tipo' => 'Id Tipo',
-			'id_banda' => 'Id Banda',
+			'id_tipo' => 'Tipo',
+			'id_banda' => 'Banda',
 			'nome' => 'Nome',
-			'obs' => 'Obs',
+			'obs' => 'Obs.',
 			'apagado' => 'Apagado',
 		);
 	}

@@ -27,61 +27,75 @@ class HistoricoController extends Controller
 	{		
 		if ($_POST)
 		{
-			//echo 'tem post' . $_POST['Produto']['id'];
 			$connection = Yii::app()->db;
 			$command = $connection->createCommand("
 				select * from (
-				select e.data as 'data', e.id_produto as 'id_produto', e.qtde as 'qtde', e.id_troca as 'id_troca', e.valor as 'valor', 'e' as 'tipo'
+				select e.id as 'id', e.data as 'data', e.id_produto as 'id_produto', e.id_integrante as 'id_integrante', e.qtde as 'qtde', e.id_troca as 'id_troca', e.valor as 'valor', 'e' as 'tipo'
 				from entrada e where e.id_produto = " . $_POST['Produto']['id'] . " and apagado <> 1
 				union all
-				select s.data as 'data', s.id_produto as 'id_produto', s.qtde as 'qtde', s.id_troca as 'id_troca', s.valor as 'valor', 's' as 'tipo'
+				select s.id as 'id', s.data as 'data', s.id_produto as 'id_produto', s.id_integrante as 'id_integrante', s.qtde as 'qtde', s.id_troca as 'id_troca', s.valor as 'valor', 's' as 'tipo'
 				from saida s where s.id_produto = " . $_POST['Produto']['id'] . " and apagado <> 1) f order by f.data,f.tipo
 			");
-			$row = $command->queryAll();
+			$rows = $command->queryAll();
 			
 			echo "<br>";
 			
 			$i = 1;
-			foreach ($row as $row)
+			foreach ($rows as $row)
 			{
 				$valor = $row['valor'];
 				$qtde = $row['qtde'];
+				$id = $row['id'];
 				$data = date('d/m/Y', strtotime($row['data']));
 				if ($row['tipo'] == 'e')
 				{
-					$connection2 = Yii::app()->db;
-					$command2 = $connection2->createCommand("
+					$command = $connection->createCommand("
 						select p.nome as 'nome' from parceiro p
 						inner join entrada e on p.id = e.id_parceiro
-						where e.id = 1
+						where e.id = $id
 					");
-					$parceiro = $command2->queryRow();
+					$parceiro = $command->queryRow();
 					$parceiro = $parceiro['nome'];
 					
+					$command = $connection->createCommand("
+						select i.nome as 'nome' from integrante i
+						inner join entrada e on i.id = e.id_integrante
+						where e.id = $id
+					");
+					$integrante = $command->queryRow();
+					$integrante = $integrante['nome'];
+					
 					if ($row['id_troca'])
-						$inicio = "Recebido $qtde unidade(s) via troca com ";
+						$inicio = "$integrante recebeu $qtde unidade(s) via troca com ";
 					elseif (!$row['id_troca'] && $row['valor'] > 0 )
-						$inicio = "Comprado $qtde unidade(s) por $valor de ";
+						$inicio = "$integrante comprou $qtde unidade(s) por $valor de ";
 					else
-						$inicio = "Recebido $qtde unidade(s) gratuitamente de ";
+						$inicio = "$integrante recebeu $qtde unidade(s) gratuitamente de ";
 				}
 				elseif ($row['tipo'] == 's')
 				{
-					$connection2 = Yii::app()->db;
-					$command2 = $connection2->createCommand("
+					$command = $connection->createCommand("
 						select p.nome as 'nome' from parceiro p
 						inner join saida s on p.id = s.id_parceiro
-						where s.id = 1
+						where s.id = $id
 					");
-					$parceiro = $command2->queryRow();
+					$parceiro = $command->queryRow();
 					$parceiro = $parceiro['nome'];
 					
+					$command = $connection->createCommand("
+							select i.nome as 'nome' from integrante i
+							inner join saida s on i.id = s.id_integrante
+							where s.id = $id
+							");
+					$integrante = $command->queryRow();
+					$integrante = $integrante['nome'];
+					
 					if ($row['id_troca'])
-						$inicio = "Enviado $qtde unidade(s) através de troca para ";
+						$inicio = "$integrante enviou $qtde unidade(s) através de troca para ";
 					elseif (!$row['id_troca'] && $row['valor'] > 0 )
-						$inicio = "Vendido $qtde unidade(s) por $valor para ";
+						$inicio = "$integrante vendeu $qtde unidade(s) por $valor para ";
 					else
-						$inicio = "Enviado $qtde unidade(s) gratuitamente para ";
+						$inicio = "$integrante enviou $qtde unidade(s) gratuitamente para ";
 				}
 				echo "<b>$i. </b> $inicio $parceiro dia $data <br>";
 				

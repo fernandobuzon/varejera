@@ -73,7 +73,7 @@ class Integrante extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'nome' => 'Nome',
-			'id_conta' => 'Id Conta',
+			'id_conta' => 'Conta',
 			'apagado' => 'Apagado',
 		);
 	}

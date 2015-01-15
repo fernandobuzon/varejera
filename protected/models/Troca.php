@@ -68,8 +68,8 @@ class Troca extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'data' => 'Data',
-			'id_integrante' => 'Id Integrante',
-			'id_parceiro' => 'Id Parceiro',
+			'id_integrante' => 'Integrante',
+			'id_parceiro' => 'Parceiro',
 			'pago' => 'Pago',
 			'recebido' => 'Recebido',
 			'apagado' => 'Apagado',

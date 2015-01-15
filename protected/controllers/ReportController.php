@@ -76,7 +76,7 @@ class ReportController extends Controller
 		}
 		
 		// Total de Recebimentos
-		$val = number_format((float)$receitas['vendasAVista']['value'] + $receitas['fiadosPagos']['value'] + $receitas['recebidoTrocas']['value'] + $receitas['investimentos']['value'], 2, '.', '');
+		$val = number_format((float)$receitas['vendasAVista']['value'] + $receitas['fiadosPagos']['value'] + $receitas['recebidoTrocas']['value'], 2, '.', '');
 		$receitas['totalRecebimentos'] = array('label'=>'Total de Recebimentos','value'=>($val ? $val : "0.00"));
 
 		// Total Faturado
@@ -102,6 +102,23 @@ class ReportController extends Controller
 			$despesas['despesas'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
 		}
 
+		// Gravações (PG)
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand('select COALESCE(SUM(valor),0) as "Gravações (Pago)" from pagamento where apagado <> 1');
+		$row = $command->queryRow();
+		foreach ($row as $key=>$val) {
+			$despesas['gravacoesPg'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+		}
+
+		// Gravações (a pagar)
+		$gravacoesPg = $despesas['gravacoesPg']['value'];
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand("select (select COALESCE(SUM(valor),0) from gravacao where apagado <> 1) - $gravacoesPg as 'Gravações (A pagar)'");
+		$row = $command->queryRow();
+		foreach ($row as $key=>$val) {
+			$despesas['gravacoesAPg'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+		}
+		
 		// Trocas
 		$connection = Yii::app()->db;
 		$command = $connection->createCommand('select COALESCE(SUM(pago),0) as "Pago com trocas" from troca where apagado <> 1');
@@ -112,7 +129,7 @@ class ReportController extends Controller
 
 		// Total de Pagamentos
 		$connection = Yii::app()->db;
-		$command = $connection->createCommand('select (select COALESCE(SUM(valor),0) from entrada where apagado <> 1) + (select COALESCE(SUM(valor),0) from mov_despesa where apagado <> 1) as "Total de Pagamentos"');
+		$command = $connection->createCommand('select (select COALESCE(SUM(valor),0) from entrada where apagado <> 1) + (select COALESCE(SUM(valor),0) from mov_despesa where apagado <> 1) + (select COALESCE(SUM(valor),0) from pagamento where apagado <> 1) as "Total de Pagamentos"');
 		$row = $command->queryRow();
 		foreach ($row as $key=>$val) {
 			$despesas['totalPagamentos'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
@@ -122,17 +139,21 @@ class ReportController extends Controller
 		$geral = array();
 		
 		// Caixa Atual
-		$val = number_format((float)$receitas['totalRecebimentos']['value'] - $despesas['totalPagamentos']['value'], 2, '.', ''); 
+		$val = number_format((float)$receitas['totalRecebimentos']['value'] - $despesas['totalPagamentos']['value'] + $receitas['investimentos']['value'], 2, '.', ''); 
 		$geral['caixa'] = array('label'=>'Caixa Atual','value'=>$val);
 		
 		// Caixa Atual + fiados
 		$val = number_format((float)$geral['caixa']['value'] + $receitas['fiadosPendentes']['value'], 2, '.', '');
 		$geral['caixaMaisFiados'] = array('label'=>'Caixa Atual + Fiados','value'=>$val);
 
-		// Balanço (sem investimentos)
-		$val = number_format((float)$geral['caixaMaisFiados']['value'] - $receitas['investimentos']['value'], 2, '.', '');
-		$geral['balanco'] = array('label'=>'Balanço sem invest.','value'=>$val);
+		// Balanço Atual (sem investimentos)
+		$val = number_format((float)$geral['caixa']['value'] - $receitas['investimentos']['value'], 2, '.', '');
+		$geral['balancoAtual'] = array('label'=>'Balanço atual sem invest.','value'=>$val);
 
+		// Balanço Total (sem investimentos)
+		$val = number_format((float)$geral['caixaMaisFiados']['value'] - $receitas['investimentos']['value'] - $despesas['gravacoesAPg']['value'], 2, '.', '');
+		$geral['balancoTotal'] = array('label'=>'Balanço total sem invest.','value'=>$val);
+		
 		// S A L D O S
 		$contas = Conta::model()->findAll(array('condition'=>'apagado != 1'));
 		$integrantes = Integrante::model()->findAll(array('condition'=>'apagado != 1'));
@@ -157,6 +178,8 @@ class ReportController extends Controller
 						- (select COALESCE(SUM(valor),0) from mov_despesa where id_integrante = $integranteID and apagado <> 1)
 						- (select COALESCE(SUM(valor),0) from entrada where id_integrante = $integranteID and apagado <> 1)
 						- (select COALESCE(SUM(valor),0) from mov_conta where id_conta_orig = $conta->id and apagado <> 1)
+						- (select COALESCE(SUM(valor),0) from pagamento where id_integrante = $integranteID and apagado <> 1)
+						+ (select COALESCE(SUM(valor),0) from investimento where id_integrante = $integranteID and apagado <> 1)
 						+ (select COALESCE(SUM(valor),0) from mov_conta where id_conta_dest = $conta->id and apagado <> 1) 
 						as '$conta->nome'");				
 				$row = $command->queryRow();

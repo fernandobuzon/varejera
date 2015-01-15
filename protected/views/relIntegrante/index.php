@@ -94,9 +94,17 @@ $this->breadcrumbs=array(
 		foreach ($row as $key=>$val) {
 			$integ[$i]['transferenciasRec'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
 		}
+
+		// Pago para Gravações
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand("select COALESCE(SUM(valor),0) as 'Pago para Gravações' from pagamento where id_integrante = $integrante->id and apagado <> 1");
+		$row = $command->queryRow();
+		foreach ($row as $key=>$val) {
+			$integ[$i]['pagoGrav'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+		}
 		
 		// Em caixa
-		$val = number_format((float)$integ[$i]['vendasReceb']['value'] + $integ[$i]['trocasReceb']['value'] - $integ[$i]['despesas']['value'] - $integ[$i]['compras']['value'] - $integ[$i]['transferenciasRep']['value'] + $integ[$i]['transferenciasRec']['value'], 2, '.', '');
+		$val = number_format((float)$integ[$i]['vendasReceb']['value'] + $integ[$i]['trocasReceb']['value'] - $integ[$i]['despesas']['value'] - $integ[$i]['compras']['value'] - $integ[$i]['transferenciasRep']['value'] + $integ[$i]['transferenciasRec']['value'] - $integ[$i]['pagoGrav']['value'] + $integ[$i]['investimentos']['value'], 2, '.', '');
 		$integ[$i]['caixa'] = array('label'=>'Em caixa', 'type'=>'html', 'value'=>'<b>' . $val . '</b>');
 				
 		// R E N D E R

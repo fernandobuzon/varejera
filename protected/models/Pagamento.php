@@ -1,29 +1,28 @@
 <?php
 
 /**
- * This is the model class for table "baixa".
+ * This is the model class for table "pagamento".
  *
- * The followings are the available columns in table 'baixa':
+ * The followings are the available columns in table 'pagamento':
  * @property integer $id
- * @property string $data
+ * @property integer $id_gravacao
  * @property integer $id_integrante
- * @property integer $qtde
- * @property integer $id_produto
- * @property string $motivo
+ * @property string $data
+ * @property string $valor
  * @property integer $apagado
  *
  * The followings are the available model relations:
  * @property Integrante $idIntegrante
- * @property Produto $idProduto
+ * @property Gravacao $idGravacao
  */
-class Baixa extends CActiveRecord
+class Pagamento extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'baixa';
+		return 'pagamento';
 	}
 
 	/**
@@ -34,12 +33,12 @@ class Baixa extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('data, id_integrante, qtde, id_produto, motivo', 'required'),
-			array('id_integrante, qtde, id_produto, apagado', 'numerical', 'integerOnly'=>true),
-			array('motivo', 'length', 'max'=>250),
+			array('id_gravacao, id_integrante, data', 'required'),
+			array('id_gravacao, id_integrante, apagado', 'numerical', 'integerOnly'=>true),
+			array('valor', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, data, id_integrante, qtde, id_produto, motivo, apagado', 'safe', 'on'=>'search'),
+			array('id, id_gravacao, id_integrante, data, valor, apagado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,7 +51,7 @@ class Baixa extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'idIntegrante' => array(self::BELONGS_TO, 'Integrante', 'id_integrante'),
-			'idProduto' => array(self::BELONGS_TO, 'Produto', 'id_produto'),
+			'idGravacao' => array(self::BELONGS_TO, 'Gravacao', 'id_gravacao'),
 		);
 	}
 
@@ -63,11 +62,10 @@ class Baixa extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'data' => 'Data',
+			'id_gravacao' => 'Gravação',
 			'id_integrante' => 'Integrante',
-			'qtde' => 'Qtde.',
-			'id_produto' => 'Produto',
-			'motivo' => 'Motivo',
+			'data' => 'Data',
+			'valor' => 'Valor',
 			'apagado' => 'Apagado',
 		);
 	}
@@ -91,14 +89,13 @@ class Baixa extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('data',$this->data,true);
+		$criteria->compare('id_gravacao',$this->id_gravacao);
 		$criteria->compare('id_integrante',$this->id_integrante);
-		$criteria->compare('qtde',$this->qtde);
-		$criteria->compare('id_produto',$this->id_produto);
-		$criteria->compare('motivo',$this->motivo,true);
+		$criteria->compare('data',$this->data,true);
+		$criteria->compare('valor',$this->valor,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
-		$criteria->order = 'data DESC';
+		$criteria->order = 'data';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -109,16 +106,27 @@ class Baixa extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Baixa the static model class
+	 * @return Pagamento the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
 	
-	/**
-	 * Custom
-	 */
+	public function searchByGravacao($id)
+	{
+		$criteria=new CDbCriteria;
+		$criteria->compare('id_gravacao',$id);
+		$criteria->addCondition('apagado != 1');
+		$criteria->order = 'data desc, id_integrante';
+	
+		return new CActiveDataProvider($this, array(
+				'criteria'=>$criteria,
+				'pagination' => array(
+						'pageSize' => 100,
+				),
+		));
+	}
 	
 	protected function afterFind(){
 		parent::afterFind();

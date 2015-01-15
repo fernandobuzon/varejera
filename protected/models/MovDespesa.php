@@ -69,11 +69,11 @@ class MovDespesa extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'data' => 'Data',
-			'id_despesa' => 'Id Despesa',
-			'id_integrante' => 'Id Integrante',
+			'id_despesa' => 'Despesa',
+			'id_integrante' => 'Integrante',
 			'valor' => 'Valor',
 			'pg' => 'Pg',
-			'id_saida' => 'Id Saida',
+			'id_saida' => 'Saída',
 			'obs' => 'Obs',
 			'apagado' => 'Apagado',
 		);

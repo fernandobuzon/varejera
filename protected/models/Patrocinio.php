@@ -72,13 +72,13 @@ class Patrocinio extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'data' => 'Data',
-			'id_integrante' => 'Id Integrante',
-			'id_patrocinador' => 'Id Patrocinador',
+			'id_integrante' => 'Integrante',
+			'id_patrocinador' => 'Patrocinador',
 			'valor' => 'Valor',
-			'pg' => 'Pg',
-			'obs' => 'Obs',
-			'id_evento' => 'Id Evento',
-			'id_producao' => 'Id Producao',
+			'pg' => 'Pago?',
+			'obs' => 'Obs.',
+			'id_evento' => 'Evento',
+			'id_producao' => 'Producao',
 			'apagado' => 'Apagado',
 		);
 	}

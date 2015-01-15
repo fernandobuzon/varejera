@@ -63,9 +63,9 @@ class Retirada extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'data' => 'Data',
-			'id_integrante' => 'Id Integrante',
-			'id_produto' => 'Id Produto',
-			'qtde' => 'Qtde',
+			'id_integrante' => 'Integrante',
+			'id_produto' => 'Produto',
+			'qtde' => 'Qtde.',
 			'apagado' => 'Apagado',
 		);
 	}

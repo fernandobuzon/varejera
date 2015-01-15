@@ -65,7 +65,7 @@ class Patrocinador extends CActiveRecord
 			'link' => 'Link',
 			'endereco' => 'Endereco',
 			'cidade' => 'Cidade',
-			'cep' => 'Cep',
+			'cep' => 'CEP',
 			'apagado' => 'Apagado',
 		);
 	}

@@ -84,16 +84,16 @@ class Saida extends CActiveRecord
 			'id' => 'ID',
 			'data' => 'Data',
 			'qtde' => 'Qtde',
-			'id_integrante' => 'Id Integrante',
-			'id_produto' => 'Id Produto',
-			'ocasiao' => 'Ocasiao',
-			'id_parceiro' => 'Id Parceiro',
+			'id_integrante' => 'Integrante',
+			'id_produto' => 'Produto',
+			'ocasiao' => 'Ocasião',
+			'id_parceiro' => 'Parceiro',
 			'valor' => 'Valor',
 			'fiado' => 'Fiado',
 			'quitado' => 'Quitado',
-			'obs' => 'Obs',
-			'id_troca' => 'Id Troca',
-			'id_consig' => 'Id Consig',
+			'obs' => 'Obs.',
+			'id_troca' => 'Troca',
+			'id_consig' => 'Consignação',
 			'apagado' => 'Apagado',
 		);
 	}
@@ -245,6 +245,8 @@ class Saida extends CActiveRecord
 			$this->data=date('Y-m-d', strtotime(str_replace("/", "-", $this->data)));
 			if ($this->quitado)
 				$this->quitado=date('Y-m-d', strtotime(str_replace("/", "-", $this->quitado)));
+			else
+				$this->quitado=null;
 			return TRUE;
 		}
 		else return FALSE;

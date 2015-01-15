@@ -63,9 +63,9 @@ class Evento extends CActiveRecord
 			'nome' => 'Nome',
 			'data' => 'Data',
 			'local' => 'Local',
-			'horario' => 'Horario',
+			'horario' => 'Horário',
 			'ingresso' => 'Ingresso',
-			'concluido' => 'Concluido',
+			'concluido' => 'Concluído',
 			'apagado' => 'Apagado',
 		);
 	}

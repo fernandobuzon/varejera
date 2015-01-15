@@ -66,9 +66,9 @@ class MovConta extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'data' => 'Data',
-			'id_integrante' => 'Id Integrante',
-			'id_conta_orig' => 'Id Conta Orig',
-			'id_conta_dest' => 'Id Conta Dest',
+			'id_integrante' => 'Integrante',
+			'id_conta_orig' => 'Conta de Origem',
+			'id_conta_dest' => 'Conta de Destino',
 			'valor' => 'Valor',
 			'apagado' => 'Apagado',
 		);
