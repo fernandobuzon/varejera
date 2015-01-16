@@ -9,13 +9,22 @@ $this->breadcrumbs=array(
 	$model->nome,
 );
 
-$this->menu=array(
-	//array('label'=>'List Tarefa', 'url'=>array('index')),
-	array('label'=>'Nova Tarefa', 'url'=>array('create','id_evento'=>$model->id_evento)),
-	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->id, 'id_evento'=>$model->id_evento)),
-	array('label'=>'Apagar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Lista', 'url'=>array('admin','id_evento'=>$model->id_evento)),
-);
+if ($model->id_integrante == Integrante::model()->chkId())
+{
+	$this->menu=array(
+		array('label'=>'Nova Tarefa', 'url'=>array('create','id_evento'=>$model->id_evento)),
+		array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->id, 'id_evento'=>$model->id_evento)),
+		array('label'=>'Apagar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+		array('label'=>'Lista', 'url'=>array('admin','id_evento'=>$model->id_evento)),
+	);
+}
+else
+{
+	$this->menu=array(
+			array('label'=>'Nova Tarefa', 'url'=>array('create','id_evento'=>$model->id_evento)),
+			array('label'=>'Lista', 'url'=>array('admin','id_evento'=>$model->id_evento)),
+	);
+}
 ?>
 
 <h1>Tarefa: <?php echo $model->nome; ?></h1>

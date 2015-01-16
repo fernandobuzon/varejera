@@ -69,12 +69,14 @@ $('.search-form form').submit(function(){
 			'buttons'=>array(
 				'update' => array(
 					'url'=>'Yii::app()->createUrl("tarefa/update", array("id"=>$data->id,"id_evento"=>"'. $_GET['id_evento'] . '"))',
+					'visible'=>'$data->id_integrante=="' . Integrante::model()->chkId() . '"'
 				),
 				'view' => array(
 					'url'=>'Yii::app()->createUrl("tarefa/view", array("id"=>$data->id,"id_evento"=>"'. $_GET['id_evento'] . '"))',
 				),
 				'delete' => array(
 					'url'=>'Yii::app()->createUrl("tarefa/delete", array("id"=>$data->id,"id_evento"=>"'. $_GET['id_evento'] . '"))',
+					'visible'=>'$data->id_integrante=="' . Integrante::model()->chkId() . '"'
 				),
 			),
 		),

@@ -96,6 +96,7 @@ $this->endWidget();
 </div>
 
 <div class="row">
+<br><h3>Histórico de pagamentos:</h3>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'pagamento-grid',
         'dataProvider'=>Pagamento::model()->searchByGravacao($model->id),
@@ -113,6 +114,7 @@ $this->endWidget();
 				'buttons'=>array(
 					'delete'=>array(
 						'url'=>'Yii::app()->createUrl("pagamento/delete", array("id"=>$data->id))',
+						'visible'=>'$data->id_integrante=="' . Integrante::model()->chkId() . '"'
 					)
 				)
         	),

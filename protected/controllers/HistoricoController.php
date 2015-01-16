@@ -34,6 +34,7 @@ class HistoricoController extends Controller
 			$command = $connection->createCommand("
 				select (select COALESCE(SUM(qtde),0) from entrada where id_produto = $id_produto and apagado <> 1)
 				- (select COALESCE(SUM(qtde),0) from saida where id_produto = $id_produto and apagado <> 1)
+				- (select COALESCE(SUM(qtde),0) from baixa where id_produto = $id_produto and apagado <> 1)
 				as 'estoque' 
 			");
 			$row = $command->queryRow();
@@ -50,7 +51,9 @@ class HistoricoController extends Controller
 					$command = $connection->createCommand("
 						select (select COALESCE(SUM(qtde),0) from entrada where id_produto = $id_produto and id_integrante = $integrante->id and apagado <> 1)
 						- (select COALESCE(SUM(qtde),0) from saida where id_produto = $id_produto and id_integrante = $integrante->id and apagado <> 1)
-						- (select COALESCE(SUM(qtde),0) from mov_produto where id_produto = $id_produto and id_integrante = $integrante->id and apagado <> 1)							
+						- (select COALESCE(SUM(qtde),0) from mov_produto where id_produto = $id_produto and id_integrante = $integrante->id and apagado <> 1)
+						+ (select COALESCE(SUM(qtde),0) from mov_produto where id_produto = $id_produto and id_integrante_dest = $integrante->id and apagado <> 1)
+						- (select COALESCE(SUM(qtde),0) from baixa where id_produto = $id_produto and id_integrante = $integrante->id and apagado <> 1)							
 						as 'estoque' 
 					");
 					$row = $command->queryRow();
@@ -72,7 +75,10 @@ class HistoricoController extends Controller
 				from entrada e where e.id_produto = " . $_POST['Produto']['id'] . " and apagado <> 1
 				union all
 				select s.id as 'id', s.data as 'data', s.id_produto as 'id_produto', s.id_integrante as 'id_integrante', s.qtde as 'qtde', s.id_troca as 'id_troca', s.valor as 'valor', 's' as 'tipo'
-				from saida s where s.id_produto = " . $_POST['Produto']['id'] . " and apagado <> 1) f order by f.data,f.tipo
+				from saida s where s.id_produto = " . $_POST['Produto']['id'] . " and apagado <> 1
+				union all
+				select b.id as 'id', b.data as 'data', b.id_produto as 'id_produto', b.id_integrante as 'id_integrante', b.qtde as 'qtde', null as 'id_troca', null as 'valor', 'b' as 'tipo'
+				from baixa b where b.id_produto = " . $_POST['Produto']['id'] . " and apagado <> 1) f order by data,tipo
 			");
 			$rows = $command->queryAll();
 			
@@ -135,6 +141,20 @@ class HistoricoController extends Controller
 					else
 						$inicio = "$integrante enviou $qtde unidade(s) gratuitamente para ";
 				}
+				elseif ($row['tipo'] == 'b')
+				{						
+					$command = $connection->createCommand("
+							select i.nome as 'nome' from integrante i
+							inner join baixa b on i.id = b.id_integrante
+							where b.id = $id
+							");
+					$integrante = $command->queryRow();
+					$integrante = $integrante['nome'];
+			
+					$parceiro = null;
+					$inicio = "$integrante lançou $qtde unidade(s) como baixa ";
+				}
+				
 				echo "<b>$i. </b> $inicio $parceiro dia $data <br>";
 				
 				$i++;

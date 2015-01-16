@@ -75,12 +75,14 @@ $('.search-form form').submit(function(){
 			'buttons'=>array(
 				'update' => array(
 					'url'=>'Yii::app()->createUrl("patrocinio/update", array("id"=>$data->id,"id_evento"=>"'. $_GET['id_evento'] . '"))',
+					'visible'=>'$data->id_integrante=="' . Integrante::model()->chkId() . '"'
 				),
 				'view' => array(
 					'url'=>'Yii::app()->createUrl("patrocinio/view", array("id"=>$data->id,"id_evento"=>"'. $_GET['id_evento'] . '"))',
 				),
 				'delete' => array(
 					'url'=>'Yii::app()->createUrl("patrocinio/delete", array("id"=>$data->id,"id_evento"=>"'. $_GET['id_evento'] . '"))',
+					'visible'=>'$data->id_integrante=="' . Integrante::model()->chkId() . '"'
 				),
 			),
 		),

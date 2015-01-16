@@ -7,13 +7,22 @@ $this->breadcrumbs=array(
 	$model->idParceiro->nome,
 );
 
-$this->menu=array(
-	//array('label'=>'List Consig', 'url'=>array('index')),
-	array('label'=>'Nova Consig', 'url'=>array('create')),
-	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Apagar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Tem certeza que deseja apagar essa Consignação?')),
-	array('label'=>'Lista', 'url'=>array('admin')),
-);
+if ($model->id_integrante == Integrante::model()->chkId())
+{
+	$this->menu=array(
+		array('label'=>'Nova Consig', 'url'=>array('create')),
+		array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->id)),
+		array('label'=>'Apagar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Tem certeza que deseja apagar essa Consignação?')),
+		array('label'=>'Lista', 'url'=>array('admin')),
+	);
+}
+else
+{
+	$this->menu=array(
+			array('label'=>'Nova Consig', 'url'=>array('create')),
+			array('label'=>'Lista', 'url'=>array('admin')),
+	);
+}
 ?>
 
 <h1>Consignação: <?php echo $model->idParceiro->nome; ?></h1>

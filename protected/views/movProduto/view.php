@@ -7,13 +7,22 @@ $this->breadcrumbs=array(
 	$model->idIntegrante->nome,
 );
 
-$this->menu=array(
-	//array('label'=>'List MovProduto', 'url'=>array('index')),
-	array('label'=>'Nova movimentação', 'url'=>array('create')),
-	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Apagar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Lista', 'url'=>array('admin')),
-);
+if ($model->id_integrante == Integrante::model()->chkId())
+{
+	$this->menu=array(
+		array('label'=>'Nova movimentação', 'url'=>array('create')),
+		array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->id)),
+		array('label'=>'Apagar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+		array('label'=>'Lista', 'url'=>array('admin')),
+	);
+}
+else
+{
+	$this->menu=array(
+			array('label'=>'Nova movimentação', 'url'=>array('create')),
+			array('label'=>'Lista', 'url'=>array('admin')),
+	);
+}
 ?>
 
 <h1>Movimentação: <?php echo $model->idIntegrante->nome; ?></h1>

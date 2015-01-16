@@ -29,6 +29,8 @@ $('.search-form form').submit(function(){
 <a href="<?php echo Yii::app()->createUrl('venda/admin/');?>">Todas as vendas</a><br>
 <a href="<?php echo Yii::app()->createUrl('venda/admin/');?>&fiado=1">Somente fiados em aberto</a>
 
+<?php $id_integrante = Integrante::model()->chkId(); ?>
+
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'saida-grid',
 	'dataProvider'=>$dataProvider,
@@ -83,6 +85,15 @@ $('.search-form form').submit(function(){
 		*/
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}{update}{delete}',
+			'buttons'=>array(
+				'update' => array(
+					'visible'=>'$data->id_integrante=="' . Integrante::model()->chkId() . '"'
+				),
+				'delete' => array(
+					'visible'=>'$data->id_integrante=="' . Integrante::model()->chkId() . '"'
+				),
+			),
 		),
 	),
 )); ?>

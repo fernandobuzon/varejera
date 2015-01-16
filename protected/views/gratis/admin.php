@@ -60,6 +60,15 @@ $('.search-form form').submit(function(){
 		'obs',
 		array(
 			'class'=>'CButtonColumn',
+			'template'=>'{view}{update}{delete}',
+			'buttons'=>array(
+				'update' => array(
+					'visible'=>'$data->id_integrante=="' . Integrante::model()->chkId() . '"'
+				),
+				'delete' => array(
+					'visible'=>'$data->id_integrante=="' . Integrante::model()->chkId() . '"'
+				),
+			),
 		),
 	),
 )); ?>

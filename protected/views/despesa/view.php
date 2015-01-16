@@ -7,13 +7,22 @@ $this->breadcrumbs=array(
 	$model->nome,
 );
 
-$this->menu=array(
-	//array('label'=>'List Despesa', 'url'=>array('index')),
-	array('label'=>'Nova Despesa', 'url'=>array('create')),
-	array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Apagar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Tem certeza que deseja apagar essa despesa?')),
-	array('label'=>'Lista', 'url'=>array('admin')),
-);
+if ($model->id_integrante == Integrante::model()->chkId())
+{
+	$this->menu=array(
+		array('label'=>'Nova Despesa', 'url'=>array('create')),
+		array('label'=>'Editar', 'url'=>array('update', 'id'=>$model->id)),
+		array('label'=>'Apagar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Tem certeza que deseja apagar essa despesa?')),
+		array('label'=>'Lista', 'url'=>array('admin')),
+	);
+}
+else
+{
+	$this->menu=array(
+			array('label'=>'Nova Despesa', 'url'=>array('create')),
+			array('label'=>'Lista', 'url'=>array('admin')),
+	);
+}
 ?>
 
 <h1>Despesa: <?php echo $model->nome; ?></h1>
