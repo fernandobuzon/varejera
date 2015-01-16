@@ -57,7 +57,6 @@
 						array('label'=>'Cortesias (envio)', 'url'=>array('/Cortesia/admin')),
 						array('label'=>'Cortesias (receb)', 'url'=>array('/Gratis/admin')),
 						array('label'=>'Entre integrantes', 'url'=>array('/MovProduto/admin')),
-						array('label'=>'Retiradas', 'url'=>array('/Retirada/admin')),
 						array('label'=>'Trocas', 'url'=>array('/Troca/admin')),
 						array('label'=>'Vendas', 'url'=>array('/Venda/admin')),
 					), 'visible'=>!Yii::app()->user->isGuest),
