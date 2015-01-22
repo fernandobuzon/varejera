@@ -132,7 +132,10 @@ class TarefaController extends Controller
 		if(isset($_GET['Tarefa']))
 			$model->attributes=$_GET['Tarefa'];
 
-		$dataProvider = $model->searchByIdEvento($_GET['id_evento']);
+		if (isset($_GET['all']) && $_GET['all'] == '1')
+			$dataProvider = $model->searchByIdEvento($_GET['id_evento']);
+		else
+			$dataProvider = $model->searchByIdEventoAberto($_GET['id_evento']);
 		
 		$this->render('admin',array(
 			'model'=>$model,

@@ -28,9 +28,12 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
+<a href="<?php echo Yii::app()->createUrl('tarefa/admin/',array('id_evento'=>$_GET['id_evento']));?>&all=1">Todas as tarefas</a><br>
+<a href="<?php echo Yii::app()->createUrl('tarefa/admin/',array('id_evento'=>$_GET['id_evento']));?>">Somente tarefas em aberto</a>
+
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'tarefa-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$dataProvider,
 	'filter'=>$model,
 	'columns'=>array(
 		//'id',
@@ -49,18 +52,7 @@ $('.search-form form').submit(function(){
 			'type'=>'raw',
 			'htmlOptions'=>array('width'=>'100%'),
 		),
-		array(
-			'name' => 'conclusao',
-			'header' => 'Data de conclusão',
-			'filter'=>$this->widget('zii.widgets.jui.CJuiDatePicker', array(
-				'model'=>$model,
-				'attribute'=>'conclusao',
-				'language' => 'pt-BR',
-				'options'=>array(
-					'dateFormat'=>'dd/mm/yy'
-				)
-			), true)
-		),
+		'valor_pg',
 		'valor_total',
 		//'apagado',
 		array(

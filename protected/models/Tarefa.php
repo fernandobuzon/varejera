@@ -136,7 +136,32 @@ class Tarefa extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 					'criteria'=>$criteria,
 			));
-	}	
+	}
+
+	public function searchByIdEventoAberto($id_evento)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+	
+		$criteria=new CDbCriteria;
+	
+		$criteria->compare('id',$this->id);
+		$criteria->compare('nome',$this->nome,true);
+		$criteria->compare('id_integrante',$this->id_integrante);
+		$criteria->compare('id_evento',$this->id_evento);
+		$criteria->compare('andamento',$this->andamento,true);
+		$criteria->compare('conclusao',$this->conclusao,true);
+		$criteria->compare('valor_pg',$this->valor_pg,true);
+		$criteria->compare('valor_total',$this->valor_total,true);
+		$criteria->compare('apagado',$this->apagado);
+		$criteria->compare('id_evento',$id_evento);
+		$criteria->addCondition('apagado != 1');
+		$criteria->addCondition('conclusao is null');
+		$criteria->order = 'conclusao';
+	
+		return new CActiveDataProvider($this, array(
+				'criteria'=>$criteria,
+		));
+	}
 
 	/**
 	 * Returns the static model of the specified AR class.

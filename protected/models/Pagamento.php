@@ -9,6 +9,7 @@
  * @property integer $id_integrante
  * @property string $data
  * @property string $valor
+ * @property string $obs
  * @property integer $apagado
  *
  * The followings are the available model relations:
@@ -36,9 +37,10 @@ class Pagamento extends CActiveRecord
 			array('id_gravacao, id_integrante, data', 'required'),
 			array('id_gravacao, id_integrante, apagado', 'numerical', 'integerOnly'=>true),
 			array('valor', 'length', 'max'=>11),
+			array('obs', 'length', 'max'=>240),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_gravacao, id_integrante, data, valor, apagado', 'safe', 'on'=>'search'),
+			array('id, id_gravacao, id_integrante, data, valor, obs, apagado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +68,7 @@ class Pagamento extends CActiveRecord
 			'id_integrante' => 'Integrante',
 			'data' => 'Data',
 			'valor' => 'Valor',
+			'obs' => 'Obs.',
 			'apagado' => 'Apagado',
 		);
 	}
@@ -93,6 +96,7 @@ class Pagamento extends CActiveRecord
 		$criteria->compare('id_integrante',$this->id_integrante);
 		$criteria->compare('data',$this->data,true);
 		$criteria->compare('valor',$this->valor,true);
+		$criteria->compare('obs',$this->obs,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
 		$criteria->order = 'data';

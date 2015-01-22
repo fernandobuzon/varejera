@@ -120,3 +120,25 @@ Stack trace:
 REQUEST_URI=/varejera/index.php?r=RelIntegrante/index
 HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=Report/index
 ---
+2015/01/22 17:45:01 [error] [php] Undefined variable: dataprovider (/var/www/varejera/protected/views/tarefa/admin.php:36)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CController.php(869): TarefaController->renderFile()
+#1 /var/www/yii-1.1.15.022a51/framework/web/CController.php(782): TarefaController->renderPartial()
+#2 /var/www/varejera/protected/controllers/TarefaController.php(140): TarefaController->render()
+#3 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(49): TarefaController->actionAdmin()
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): TarefaController->runAction()
+#6 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): TarefaController->filterAccessControl()
+#9 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): TarefaController->runActionWithFilters()
+#12 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): TarefaController->run()
+#13 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=tarefa/admin&id_evento=1
+in /var/www/varejera/protected/views/tarefa/admin.php (36)
+in /var/www/varejera/protected/controllers/TarefaController.php (140)
+in /var/www/varejera/index.php (13)
