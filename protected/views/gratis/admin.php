@@ -53,7 +53,7 @@ $('.search-form form').submit(function(){
 		array(
 			'name' => 'id_produto',
 			'header' => 'Produto',
-			'filter'=>CHtml::listData(Produto::model()->findAll(array('order'=>'nome')),'id','nome'),
+			'filter'=>CHtml::listData(Produto::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'id','nome'),
 			'value' => '$data->idProduto->nome'
 		),
 		'ocasiao',

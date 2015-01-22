@@ -35,13 +35,13 @@ $('.search-form form').submit(function(){
 		array(
 			'name' => 'id_genero',
 			'header' => 'Gênero',
-			'filter'=>CHtml::listData(Genero::model()->findAll(array('order'=>'nome')),'id','nome'),
+			'filter'=>CHtml::listData(Genero::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'id','nome'),
 			'value' => '$data->idGenero->nome'
 		),
 		array(
 			'name' => 'nome',
 			'header' => 'Nome',
-			'filter' => CHtml::listData(Banda::model()->findAll(array('order'=>'nome')),'nome', 'nome'),
+			'filter' => CHtml::listData(Banda::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'nome', 'nome'),
 			'value' => '$data->nome'
 		),
 		'contato',

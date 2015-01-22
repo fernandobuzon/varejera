@@ -55,6 +55,23 @@ $this->breadcrumbs=array(
 			$integ[$i]['despesas'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
 		}
 		
+		// Tarefas (Pago)
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand("select COALESCE(SUM(valor_pg),0) as 'Tarefas de eventos (Pago)' from tarefa where id_integrante = $integrante->id and apagado <> 1");
+		$row = $command->queryRow();
+		foreach ($row as $key=>$val) {
+			$integ[$i]['tarefasPg'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+		}
+		
+		// Tarefas (A pagar)
+		$tarefasPg = $integ[$i]['tarefasPg']['value'];
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand("select (select COALESCE(SUM(valor_total),0) from tarefa where id_integrante = $integrante->id and apagado <> 1) - $tarefasPg as 'Tarefas (a Pagar)'");
+		$row = $command->queryRow();
+		foreach ($row as $key=>$val) {
+			$integ[$i]['tarefasAPg'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+		}
+		
 		// Compras
 		$connection = Yii::app()->db;
 		$command = $connection->createCommand("select COALESCE(SUM(valor),0) as 'Compras' from entrada where id_integrante = $integrante->id and apagado <> 1");
@@ -104,7 +121,7 @@ $this->breadcrumbs=array(
 		}
 		
 		// Em caixa
-		$val = number_format((float)$integ[$i]['vendasReceb']['value'] + $integ[$i]['trocasReceb']['value'] - $integ[$i]['despesas']['value'] - $integ[$i]['compras']['value'] - $integ[$i]['transferenciasRep']['value'] + $integ[$i]['transferenciasRec']['value'] - $integ[$i]['pagoGrav']['value'] + $integ[$i]['investimentos']['value'], 2, '.', '');
+		$val = number_format((float)$integ[$i]['vendasReceb']['value'] + $integ[$i]['trocasReceb']['value'] - $integ[$i]['despesas']['value'] - $integ[$i]['compras']['value'] - $integ[$i]['transferenciasRep']['value'] + $integ[$i]['transferenciasRec']['value'] - $integ[$i]['pagoGrav']['value'] -$integ[$i]['tarefasPg']['value'] + $integ[$i]['investimentos']['value'], 2, '.', '');
 		$integ[$i]['caixa'] = array('label'=>'Em caixa', 'type'=>'html', 'value'=>'<b>' . $val . '</b>');
 				
 		// R E N D E R
@@ -148,6 +165,22 @@ $this->breadcrumbs=array(
 		$row = $command->queryRow();
 		foreach ($row as $key=>$val) {
 			$integQ[$i]['trocasProdReceb'] = array('label'=>$key,'value'=>($val ? $val : "0"));
+		}
+
+		// Tarefas a fazer
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand("select COALESCE(COUNT(*),0) as 'Tarefas a fazer' from tarefa where id_integrante = $integrante->id and conclusao is null and apagado <> 1");
+		$row = $command->queryRow();
+		foreach ($row as $key=>$val) {
+			$integQ[$i]['tarefasAFazer'] = array('label'=>$key,'value'=>($val ? $val : "0"));
+		}
+
+		// Tarefas realizadas
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand("select COALESCE(COUNT(*),0) as 'Tarefas realizadas' from tarefa where id_integrante = $integrante->id and conclusao is not null and apagado <> 1");
+		$row = $command->queryRow();
+		foreach ($row as $key=>$val) {
+			$integQ[$i]['tarefasRealizadas'] = array('label'=>$key,'value'=>($val ? $val : "0"));
 		}
 		
 		// Remessas em consignação

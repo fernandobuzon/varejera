@@ -90,3 +90,33 @@ REQUEST_URI=/varejera/index.php?r=venda/admin
 in /var/www/varejera/protected/views/venda/admin.php (91)
 in /var/www/varejera/protected/controllers/VendaController.php (144)
 in /var/www/varejera/index.php (13)
+2015/01/22 17:21:13 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'qtde' in 'field list'. The SQL statement executed was: select COALESCE(SUM(qtde),0) as 'Tarefas a fazer' from tarefa where id_integrante = 1 and conclusao is null and apagado <> 1.
+in /var/www/varejera/protected/views/relIntegrante/index.php (173)
+in /var/www/varejera/protected/controllers/RelIntegranteController.php (27)
+in /var/www/varejera/index.php (13)
+2015/01/22 17:21:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'qtde' in 'field list'. The SQL statement executed was: select COALESCE(SUM(qtde),0) as 'Tarefas a fazer' from tarefa where id_integrante = 1 and conclusao is null and apagado <> 1' in /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /var/www/varejera/protected/views/relIntegrante/index.php(173): CDbCommand->queryRow()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(126): require('/var/www/vareje...')
+#3 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/vareje...', NULL, true)
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(869): CBaseController->renderFile('/var/www/vareje...', NULL, true)
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#6 /var/www/varejera/protected/controllers/RelIntegranteController.php(27): CController->render('index')
+#7 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(49): RelIntegranteController->actionIndex()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#15 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('index')
+#17 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('RelIntegrante/i...')
+#18 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/varejera/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/varejera/index.php?r=RelIntegrante/index
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=Report/index
+---

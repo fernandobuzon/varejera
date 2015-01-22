@@ -47,20 +47,20 @@ $('.search-form form').submit(function(){
 		array(
 			'name' => 'id_integrante',
 			'header' => 'Integrante',
-			'filter'=>CHtml::listData(Integrante::model()->findAll(array('order'=>'nome')),'id','nome'),
+			'filter'=>CHtml::listData(Integrante::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'id','nome'),
 			'value' => '$data->idIntegrante->nome'
 		),
 		'qtde',
 		array(
 			'name' => 'id_produto',
 			'header' => 'Produto',
-			'filter'=>CHtml::listData(Produto::model()->findAll(array('order'=>'nome')),'id','nome'),
+			'filter'=>CHtml::listData(Produto::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'id','nome'),
 			'value' => '$data->idProduto->nome'
 		),
 		array(
 			'name' => 'id_parceiro',
 			'header' => 'Parceiro',
-			'filter'=>CHtml::listData(Parceiro::model()->findAll(array('order'=>'nome')),'id','nome'),
+			'filter'=>CHtml::listData(Parceiro::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')),'id','nome'),
 			'value' => '$data->idParceiro->nome'
 		),
 		'obs',

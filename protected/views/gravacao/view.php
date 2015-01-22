@@ -69,6 +69,8 @@ $this->widget('zii.widgets.jui.CJuiDatePicker', array(
 
 echo $form->textField($modelp,'valor',array('size'=>11,'maxlength'=>11));
 
+echo $form->textField($modelp,'obs',array('size'=>60,'maxlength'=>240,'placeholder'=>'Obs.'));
+
 echo CHtml::button('Efetuar novo pagamento', array(
 		'ajax' => array(
 				'type'=>'POST',
@@ -108,6 +110,7 @@ $this->endWidget();
 				'value' => '$data->idIntegrante->nome'
 			),
         	'valor',
+        	'obs',
         	array(
         		'class'=>'CButtonColumn',
 				'template'=>'{delete}',

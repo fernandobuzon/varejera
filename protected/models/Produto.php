@@ -124,7 +124,7 @@ class Produto extends CActiveRecord
 	
 	public function listaProdutos()
 	{
-		$listaProdutos = CHtml::listData(Produto::model()->findAll(), 'id', 'nome');
+		$listaProdutos = CHtml::listData(Produto::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')), 'id', 'nome');
 		if($listaProdutos)
 			return $listaProdutos;
 		else

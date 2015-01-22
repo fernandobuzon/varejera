@@ -108,7 +108,7 @@ class Consig extends CActiveRecord
 		$criteria->compare('baixado',$this->baixado);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
-		$criteria->order = 'data DESC';
+		$criteria->order = 'baixado, data DESC';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
