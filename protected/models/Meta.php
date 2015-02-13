@@ -1,31 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "gravacao".
+ * This is the model class for table "meta".
  *
- * The followings are the available columns in table 'gravacao':
+ * The followings are the available columns in table 'meta':
  * @property integer $id
- * @property integer $id_estudio
- * @property integer $id_banda
+ * @property string $data
+ * @property string $previsao
  * @property string $nome
- * @property string $data_i
- * @property string $data_f
- * @property string $valor
- * @property string $obs
+ * @property string $andamento
+ * @property string $valor_pg
+ * @property string $valor_total
+ * @property string $conclusao
  * @property integer $apagado
- *
- * The followings are the available model relations:
- * @property Banda $idBanda
- * @property Estudio $idEstudio
  */
-class Gravacao extends CActiveRecord
+class Meta extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'gravacao';
+		return 'meta';
 	}
 
 	/**
@@ -36,15 +32,15 @@ class Gravacao extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_estudio, id_banda, nome, data_i', 'required'),
-			array('id_estudio, id_banda, apagado', 'numerical', 'integerOnly'=>true),
+			array('data, previsao, nome', 'required'),
+			array('apagado', 'numerical', 'integerOnly'=>true),
 			array('nome', 'length', 'max'=>240),
-			array('valor', 'length', 'max'=>11),
-			array('obs', 'length', 'max'=>10000),
-			array('data_f', 'safe'),
+			array('andamento', 'length', 'max'=>10000),
+			array('valor_pg, valor_total', 'length', 'max'=>11),
+			array('conclusao', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, id_estudio, id_banda, nome, data_i, data_f, valor, obs, apagado', 'safe', 'on'=>'search'),
+			array('id, data, previsao, nome, andamento, valor_pg, valor_total, conclusao, apagado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,8 +52,6 @@ class Gravacao extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idBanda' => array(self::BELONGS_TO, 'Banda', 'id_banda'),
-			'idEstudio' => array(self::BELONGS_TO, 'Estudio', 'id_estudio'),
 		);
 	}
 
@@ -68,13 +62,13 @@ class Gravacao extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'id_estudio' => 'Estúdio',
-			'id_banda' => 'Banda',
+			'data' => 'Data',
+			'previsao' => 'Previsão',
 			'nome' => 'Nome',
-			'data_i' => 'Data de início',
-			'data_f' => 'Data de conclusão',
-			'valor' => 'Valor',
-			'obs' => 'Obs.',
+			'andamento' => 'Andamento',
+			'valor_pg' => 'Valor Pago',
+			'valor_total' => 'Valor Total',
+			'conclusao' => 'Conclusão',
 			'apagado' => 'Apagado',
 		);
 	}
@@ -98,82 +92,84 @@ class Gravacao extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('id_estudio',$this->id_estudio);
-		$criteria->compare('id_banda',$this->id_banda);
+		$criteria->compare('data',$this->data,true);
+		$criteria->compare('previsao',$this->previsao,true);
 		$criteria->compare('nome',$this->nome,true);
-		$criteria->compare('data_i',$this->data_i,true);
-		$criteria->compare('data_f',$this->data_f,true);
-		$criteria->compare('valor',$this->valor,true);
-		$criteria->compare('obs',$this->obs,true);
+		$criteria->compare('andamento',$this->andamento,true);
+		$criteria->compare('valor_pg',$this->valor_pg,true);
+		$criteria->compare('valor_total',$this->valor_total,true);
+		$criteria->compare('conclusao',$this->conclusao,true);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
-		$criteria->order = 'nome';
+		$criteria->order = 'previsao';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 
-	public function searchGravacoesEmAberto()
+	public function searchAberto()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 	
 		$criteria=new CDbCriteria;
 	
 		$criteria->compare('id',$this->id);
-		$criteria->compare('id_estudio',$this->id_estudio);
-		$criteria->compare('id_banda',$this->id_banda);
+		$criteria->compare('data',$this->data,true);
+		$criteria->compare('previsao',$this->previsao,true);
 		$criteria->compare('nome',$this->nome,true);
-		$criteria->compare('data_i',$this->data_i,true);
-		$criteria->compare('data_f',$this->data_f,true);
-		$criteria->compare('valor',$this->valor,true);
-		$criteria->compare('obs',$this->obs,true);
+		$criteria->compare('andamento',$this->andamento,true);
+		$criteria->compare('valor_pg',$this->valor_pg,true);
+		$criteria->compare('valor_total',$this->valor_total,true);
+		$criteria->compare('conclusao',$this->conclusao,true);
 		$criteria->compare('apagado',$this->apagado);
-		$criteria->addCondition('data_f is null');
 		$criteria->addCondition('apagado != 1');
-		$criteria->order = 'nome';
+		$criteria->addCondition('conclusao is null');
+		$criteria->order = 'previsao';
 	
 		return new CActiveDataProvider($this, array(
 				'criteria'=>$criteria,
 		));
 	}
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Gravacao the static model class
+	 * @return Meta the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-	
-	public function chkGravacao($id)
+
+	protected function afterFind()
 	{
-		$model = Gravacao::model()->findByPk($id);
-		return $model->nome;
+		if($this->data)
+		{
+			parent::afterFind();
+			$this->data=date('d/m/Y', strtotime(str_replace("-", "", $this->data)));
+			$this->previsao=date('d/m/Y', strtotime(str_replace("-", "", $this->previsao)));
+			$this->conclusao=date('d/m/Y', strtotime(str_replace("-", "", $this->conclusao)));
+		}
 	}
 	
-	public function chkValor($id)
+	protected function beforeSave()
 	{
-		$model = Gravacao::model()->findByPk($id);
-		return $model->valor;
-	}
+		$this->conclusao=2014-02-02;
+		if(parent::beforeSave())
+		{
+			$this->data=date('Y-m-d', strtotime(str_replace("/", "-", $this->data)));
+			$this->previsao=date('Y-m-d', strtotime(str_replace("/", "-", $this->previsao)));
 	
-	protected function afterFind(){
-		parent::afterFind();
-		$this->data_i=date('d/m/Y', strtotime(str_replace("-", "", $this->data_i)));
-		if ($this->data_f)
-			$this->data_f=date('d/m/Y', strtotime(str_replace("-", "", $this->data_f)));
-	}
-	
-	protected function beforeSave(){
-		if(parent::beforeSave()){
-			$this->data_i=date('Y-m-d', strtotime(str_replace("/", "-", $this->data_i)));
-			if ($this->data_f)
-				$this->data_f=date('Y-m-d', strtotime(str_replace("/", "-", $this->data_f)));
+			if ($this->conclusao)
+			{
+				//$this->conclusao=date('Y-m-d', strtotime(str_replace("/", "-", $this->conclusao)));
+				$this->conclusao=2014-02-02;
+			}
 			else
-				$this->data_f=null;
+				$this->conclusao=2014-02-02;
+				
 			return TRUE;
 		}
 		else return FALSE;

@@ -65,6 +65,7 @@
 					'items'=>array(
 						array('label'=>'Eventos', 'url'=>array('/Evento/admin')),
 						array('label'=>'Gravações', 'url'=>array('/Gravacao/admin')),
+						array('label'=>'Metas', 'url'=>array('/Meta/admin')),
 					), 'visible'=>!Yii::app()->user->isGuest),
 					
 				array('label'=>'Financeiro', 'url'=>'',

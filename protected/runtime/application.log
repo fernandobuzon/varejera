@@ -142,3 +142,180 @@ REQUEST_URI=/varejera/index.php?r=tarefa/admin&id_evento=1
 in /var/www/varejera/protected/views/tarefa/admin.php (36)
 in /var/www/varejera/protected/controllers/TarefaController.php (140)
 in /var/www/varejera/index.php (13)
+2015/02/10 19:35:17 [error] [php] Undefined variable: model (/var/www/varejera/protected/views/pagamento/index.php:42)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CController.php(869): PagamentoController->renderFile()
+#1 /var/www/yii-1.1.15.022a51/framework/web/CController.php(782): PagamentoController->renderPartial()
+#2 /var/www/varejera/protected/controllers/PagamentoController.php(122): PagamentoController->render()
+#3 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(49): PagamentoController->actionIndex()
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): PagamentoController->runAction()
+#6 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): PagamentoController->filterAccessControl()
+#9 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): PagamentoController->runActionWithFilters()
+#12 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): PagamentoController->run()
+#13 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=pagamento/index&id_gravacao=1
+in /var/www/varejera/protected/views/pagamento/index.php (42)
+in /var/www/varejera/protected/controllers/PagamentoController.php (122)
+in /var/www/varejera/index.php (13)
+2015/02/10 19:42:30 [error] [php] Undefined index: id_gravacao (/var/www/varejera/protected/views/pagamento/admin.php:7)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CController.php(869): PagamentoController->renderFile()
+#1 /var/www/yii-1.1.15.022a51/framework/web/CController.php(782): PagamentoController->renderPartial()
+#2 /var/www/varejera/protected/controllers/PagamentoController.php(137): PagamentoController->render()
+#3 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(49): PagamentoController->actionAdmin()
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): PagamentoController->runAction()
+#6 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): PagamentoController->filterAccessControl()
+#9 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): PagamentoController->runActionWithFilters()
+#12 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): PagamentoController->run()
+#13 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=pagamento/admin
+in /var/www/varejera/protected/views/pagamento/admin.php (7)
+in /var/www/varejera/protected/controllers/PagamentoController.php (137)
+in /var/www/varejera/index.php (13)
+2015/02/10 19:43:24 [error] [php] Undefined index: id_gravacao (/var/www/varejera/protected/views/pagamento/admin.php:7)
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CController.php(869): PagamentoController->renderFile()
+#1 /var/www/yii-1.1.15.022a51/framework/web/CController.php(782): PagamentoController->renderPartial()
+#2 /var/www/varejera/protected/controllers/PagamentoController.php(137): PagamentoController->render()
+#3 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(49): PagamentoController->actionAdmin()
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): PagamentoController->runAction()
+#6 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): PagamentoController->filterAccessControl()
+#9 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#11 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): PagamentoController->runActionWithFilters()
+#12 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): PagamentoController->run()
+#13 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/varejera/index.php(13): CWebApplication->run()
+REQUEST_URI=/varejera/index.php?r=pagamento/admin
+in /var/www/varejera/protected/views/pagamento/admin.php (7)
+in /var/www/varejera/protected/controllers/PagamentoController.php (137)
+in /var/www/varejera/index.php (13)
+2015/02/10 19:44:31 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and apagado <> 1' at line 1. The SQL statement executed was: select COALESCE(SUM(valor),0) from pagamento where id_gravacao =  and apagado <> 1.
+in /var/www/varejera/protected/views/pagamento/admin.php (43)
+in /var/www/varejera/protected/controllers/PagamentoController.php (137)
+in /var/www/varejera/index.php (13)
+2015/02/10 19:44:31 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and apagado <> 1' at line 1. The SQL statement executed was: select COALESCE(SUM(valor),0) from pagamento where id_gravacao =  and apagado <> 1' in /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /var/www/varejera/protected/views/pagamento/admin.php(43): CDbCommand->queryRow()
+#2 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(126): require('/var/www/vareje...')
+#3 /var/www/yii-1.1.15.022a51/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/vareje...', Array, true)
+#4 /var/www/yii-1.1.15.022a51/framework/web/CController.php(869): CBaseController->renderFile('/var/www/vareje...', Array, true)
+#5 /var/www/yii-1.1.15.022a51/framework/web/CController.php(782): CController->renderPartial('admin', Array, true)
+#6 /var/www/varejera/protected/controllers/PagamentoController.php(137): CController->render('admin', Array)
+#7 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(49): PagamentoController->actionAdmin()
+#8 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#15 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('admin')
+#17 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('pagamento/admin')
+#18 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/varejera/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/varejera/index.php?r=pagamento/admin&id_gravacao=1
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=Gravacao/view&id=1
+---
+2015/02/13 18:45:13 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and apagado <> 1' at line 1. The SQL statement executed was: select COALESCE(SUM(valor),0) from pagamento where id_gravacao =  and apagado <> 1.
+in /var/www/varejera/protected/controllers/GravacaoController.php (191)
+in /var/www/varejera/index.php (13)
+2015/02/13 18:45:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and apagado <> 1' at line 1. The SQL statement executed was: select COALESCE(SUM(valor),0) from pagamento where id_gravacao =  and apagado <> 1' in /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /var/www/varejera/protected/controllers/GravacaoController.php(191): CDbCommand->queryRow()
+#2 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(49): GravacaoController->actionAjaxPagamento()
+#3 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('AjaxPagamento')
+#12 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('gravacao/AjaxPa...')
+#13 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/varejera/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/varejera/index.php?r=gravacao/AjaxPagamento
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=pagamento/admin&id_gravacao=2
+---
+2015/02/13 18:45:22 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and apagado <> 1' at line 1. The SQL statement executed was: select COALESCE(SUM(valor),0) from pagamento where id_gravacao =  and apagado <> 1.
+in /var/www/varejera/protected/controllers/GravacaoController.php (191)
+in /var/www/varejera/index.php (13)
+2015/02/13 18:45:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and apagado <> 1' at line 1. The SQL statement executed was: select COALESCE(SUM(valor),0) from pagamento where id_gravacao =  and apagado <> 1' in /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /var/www/varejera/protected/controllers/GravacaoController.php(191): CDbCommand->queryRow()
+#2 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(49): GravacaoController->actionAjaxPagamento()
+#3 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('AjaxPagamento')
+#12 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('gravacao/AjaxPa...')
+#13 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/varejera/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/varejera/index.php?r=gravacao/AjaxPagamento
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=pagamento/admin&id_gravacao=2
+---
+2015/02/13 18:46:22 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and apagado <> 1' at line 1. The SQL statement executed was: select COALESCE(SUM(valor),0) from pagamento where id_gravacao =  and apagado <> 1.
+in /var/www/varejera/protected/controllers/GravacaoController.php (191)
+in /var/www/varejera/index.php (13)
+2015/02/13 18:46:22 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and apagado <> 1' at line 1. The SQL statement executed was: select COALESCE(SUM(valor),0) from pagamento where id_gravacao =  and apagado <> 1' in /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /var/www/varejera/protected/controllers/GravacaoController.php(191): CDbCommand->queryRow()
+#2 /var/www/yii-1.1.15.022a51/framework/web/actions/CInlineAction.php(49): GravacaoController->actionAjaxPagamento()
+#3 /var/www/yii-1.1.15.022a51/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii-1.1.15.022a51/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /var/www/yii-1.1.15.022a51/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /var/www/yii-1.1.15.022a51/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /var/www/yii-1.1.15.022a51/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii-1.1.15.022a51/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(282): CController->run('AjaxPagamento')
+#12 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('gravacao/AjaxPa...')
+#13 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/varejera/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/varejera/index.php?r=gravacao/AjaxPagamento
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=pagamento/admin&id_gravacao=2
+---
+2015/02/13 18:57:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "desenvolvimento/admin".' in /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii-1.1.15.022a51/framework/web/CWebApplication.php(141): CWebApplication->runController('desenvolvimento...')
+#1 /var/www/yii-1.1.15.022a51/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/varejera/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/varejera/index.php?r=desenvolvimento/admin&id_gravacao=1
+HTTP_REFERER=http://restodeontem.com.br/varejera/index.php?r=gravacao/view&id=1
+---

@@ -1,6 +1,6 @@
 <?php
 
-class GravacaoController extends Controller
+class MetaController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -53,14 +53,14 @@ class GravacaoController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Gravacao;
+		$model=new Meta;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Gravacao']))
+		if(isset($_POST['Meta']))
 		{
-			$model->attributes=$_POST['Gravacao'];
+			$model->attributes=$_POST['Meta'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -82,9 +82,9 @@ class GravacaoController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Gravacao']))
+		if(isset($_POST['Meta']))
 		{
-			$model->attributes=$_POST['Gravacao'];
+			$model->attributes=$_POST['Meta'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -116,7 +116,7 @@ class GravacaoController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Gravacao');
+		$dataProvider=new CActiveDataProvider('Meta');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -127,16 +127,17 @@ class GravacaoController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Gravacao('search');
+		$model=new Meta('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Gravacao']))
-			$model->attributes=$_GET['Gravacao'];
-		
-		if (isset($_GET['todos']) && $_GET['todos'] == '1')
+		if(isset($_GET['Meta']))
+			$model->attributes=$_GET['Meta'];
+
+		if (isset($_GET['all']) && $_GET['all'] == '1')
 			$dataProvider = $model->search();
 		else
-			$dataProvider = $model->searchGravacoesEmAberto();
-
+			$dataProvider = $model->searchAberto();
+		
+		
 		$this->render('admin',array(
 			'model'=>$model,
 			'dataProvider'=>$dataProvider,
@@ -147,12 +148,12 @@ class GravacaoController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Gravacao the loaded model
+	 * @return Meta the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Gravacao::model()->findByPk($id);
+		$model=Meta::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -160,40 +161,14 @@ class GravacaoController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Gravacao $model the model to be validated
+	 * @param Meta $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='gravacao-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='meta-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
-		}
-	}
-	
-	public function actionAjaxPagamento()
-	{
-		$modelP=new Pagamento;
-	
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-	
-		$modelP->data = $_POST['Pagamento']['data'];
-		$modelP->valor = $_POST['Pagamento']['valor'];
-		$modelP->obs = $_POST['Pagamento']['obs'];
-		$modelP->id_integrante = $_POST['id_integrante'];
-		$modelP->id_gravacao = $_POST['id_gravacao'];
-	
-		$modelP->save();
-
-		$id_gravacao = $_POST['id_gravacao'];
-		$connection = Yii::app()->db;
-		$command = $connection->createCommand("select COALESCE(SUM(valor),0) from pagamento where id_gravacao = $id_gravacao and apagado <> 1");
-		$row = $command->queryRow();
-		foreach ($row as $key=>$val) {
-			$modelG = $this->loadModel($_POST['id_gravacao']);
-			$restante = $modelG->valor - $val;
-			printf("&nbsp;Restante: %.2f", $restante);
 		}
 	}
 }
