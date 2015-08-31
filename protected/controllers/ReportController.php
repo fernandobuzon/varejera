@@ -192,47 +192,50 @@ class ReportController extends Controller
 		$integrantes = Integrante::model()->findAll(array('condition'=>'apagado != 1'));
 		foreach ($contas as $conta)
 		{
-			$integranteID = "";
-			foreach($integrantes as $integrante)
+			if ($conta->nome != 'Caixa_Ex_Integ')
 			{
-				if ($conta->id == $integrante->id_conta)
+				$integranteID = "";
+				foreach($integrantes as $integrante)
 				{
-					$integranteID = $integrante->id;
-					break;
+					if ($conta->id == $integrante->id_conta)
+					{
+						$integranteID = $integrante->id;
+						break;
+					}
 				}
-			}
-		
-			if ($integranteID != "")
-			{
-				$connection = Yii::app()->db;
-				$command = $connection->createCommand("select
-						(select COALESCE(SUM(valor),0) from saida where id_integrante = $integranteID and (fiado = 0 or (fiado = 1 and quitado is not null)) and apagado <> 1)
-						+ (select COALESCE(SUM(recebido),0) from troca where id_integrante = $integranteID and apagado <> 1)
-						- (select COALESCE(SUM(valor),0) from mov_despesa where id_integrante = $integranteID and apagado <> 1)
-						- (select COALESCE(SUM(valor),0) from entrada where id_integrante = $integranteID and apagado <> 1)
-						- (select COALESCE(SUM(valor),0) from mov_conta where id_conta_orig = $conta->id and apagado <> 1)
-						- (select COALESCE(SUM(valor),0) from pagamento where id_integrante = $integranteID and apagado <> 1)
-						- (select COALESCE(SUM(valor_pg),0) from tarefa where id_integrante = $integranteID and apagado <> 1)
-						+ (select COALESCE(SUM(valor),0) from investimento where id_integrante = $integranteID and apagado <> 1)
-						+ (select COALESCE(SUM(valor),0) from mov_conta where id_conta_dest = $conta->id and apagado <> 1) 
-						+ (select COALESCE(SUM(lucro),0) from evento where id_conta = $conta->id and apagado <> 1) 
-						+ (select COALESCE(SUM(valor),0) from patrocinio where id_integrante = $integranteID and pg = 1 and apagado <> 1) 
-						as '$conta->nome'");				
-				$row = $command->queryRow();
-				foreach ($row as $key=>$val) {
-					$saldos[] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+			
+				if ($integranteID != "")
+				{
+					$connection = Yii::app()->db;
+					$command = $connection->createCommand("select
+							(select COALESCE(SUM(valor),0) from saida where id_integrante = $integranteID and (fiado = 0 or (fiado = 1 and quitado is not null)) and apagado <> 1)
+							+ (select COALESCE(SUM(recebido),0) from troca where id_integrante = $integranteID and apagado <> 1)
+							- (select COALESCE(SUM(valor),0) from mov_despesa where id_integrante = $integranteID and apagado <> 1)
+							- (select COALESCE(SUM(valor),0) from entrada where id_integrante = $integranteID and apagado <> 1)
+							- (select COALESCE(SUM(valor),0) from mov_conta where id_conta_orig = $conta->id and apagado <> 1)
+							- (select COALESCE(SUM(valor),0) from pagamento where id_integrante = $integranteID and apagado <> 1)
+							- (select COALESCE(SUM(valor_pg),0) from tarefa where id_integrante = $integranteID and apagado <> 1)
+							+ (select COALESCE(SUM(valor),0) from investimento where id_integrante = $integranteID and apagado <> 1)
+							+ (select COALESCE(SUM(valor),0) from mov_conta where id_conta_dest = $conta->id and apagado <> 1) 
+							+ (select COALESCE(SUM(lucro),0) from evento where id_conta = $conta->id and apagado <> 1) 
+							+ (select COALESCE(SUM(valor),0) from patrocinio where id_integrante = $integranteID and pg = 1 and apagado <> 1) 
+							as '$conta->nome'");				
+					$row = $command->queryRow();
+					foreach ($row as $key=>$val) {
+						$saldos[] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+					}
 				}
-			}
-			else
-			{
-				$connection = Yii::app()->db;
-				$command = $connection->createCommand("select
-						(select COALESCE(SUM(valor),0) from mov_conta where id_conta_dest = $conta->id and apagado <> 1)
-						- (select COALESCE(SUM(valor),0) from mov_conta where id_conta_orig = $conta->id and apagado <> 1)
-						as '$conta->nome'");
-				$row = $command->queryRow();
-				foreach ($row as $key=>$val) {
-					$saldos[] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+				else
+				{
+					$connection = Yii::app()->db;
+					$command = $connection->createCommand("select
+							(select COALESCE(SUM(valor),0) from mov_conta where id_conta_dest = $conta->id and apagado <> 1)
+							- (select COALESCE(SUM(valor),0) from mov_conta where id_conta_orig = $conta->id and apagado <> 1)
+							as '$conta->nome'");
+					$row = $command->queryRow();
+					foreach ($row as $key=>$val) {
+						$saldos[] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+					}
 				}
 			}
 		}

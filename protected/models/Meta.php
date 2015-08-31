@@ -145,31 +145,24 @@ class Meta extends CActiveRecord
 
 	protected function afterFind()
 	{
-		if($this->data)
-		{
-			parent::afterFind();
-			$this->data=date('d/m/Y', strtotime(str_replace("-", "", $this->data)));
-			$this->previsao=date('d/m/Y', strtotime(str_replace("-", "", $this->previsao)));
+		parent::afterFind();
+		$this->data=date('d/m/Y', strtotime(str_replace("-", "", $this->data)));
+		$this->previsao=date('d/m/Y', strtotime(str_replace("-", "", $this->previsao)));
+		if($this->conclusao)
 			$this->conclusao=date('d/m/Y', strtotime(str_replace("-", "", $this->conclusao)));
-		}
 	}
 	
 	protected function beforeSave()
 	{
-		$this->conclusao=2014-02-02;
 		if(parent::beforeSave())
 		{
 			$this->data=date('Y-m-d', strtotime(str_replace("/", "-", $this->data)));
 			$this->previsao=date('Y-m-d', strtotime(str_replace("/", "-", $this->previsao)));
 	
 			if ($this->conclusao)
-			{
-				//$this->conclusao=date('Y-m-d', strtotime(str_replace("/", "-", $this->conclusao)));
-				$this->conclusao=2014-02-02;
-			}
+				$this->conclusao=date('Y-m-d', strtotime(str_replace("/", "-", $this->conclusao)));
 			else
-				$this->conclusao=2014-02-02;
-				
+				$this->conclusao=null;
 			return TRUE;
 		}
 		else return FALSE;
