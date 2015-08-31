@@ -38,6 +38,7 @@ $('.search-form form').submit(function(){
 		'nome',
 		'data',
 		'local',
+		'lucro',
 		//'horario',
 		//'ingresso',
 		//'concluido',

@@ -35,6 +35,22 @@ class ReportController extends Controller
 			$receitas['vendasAVista'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
 		}
 
+		// Patrocinios recebidos
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand('select COALESCE(SUM(valor),0) as "Patrocinios" from patrocinio where pg = 1 and apagado <> 1');
+		$row = $command->queryRow();
+		foreach ($row as $key=>$val) {
+			$receitas['patrocinios'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+		}
+
+		// Lucro com eventos
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand('select COALESCE(SUM(lucro),0) as "Lucro Eventos" from evento where apagado <> 1');
+		$row = $command->queryRow();
+		foreach ($row as $key=>$val) {
+			$receitas['lucroEventos'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+		}
+
 		// Vendas via consignação
 		$connection = Yii::app()->db;
 		$command = $connection->createCommand('select COALESCE(SUM(valor),0) as "Vendas via consignação" from saida where id_consig is not null and apagado <> 1');
@@ -76,7 +92,7 @@ class ReportController extends Controller
 		}
 		
 		// Total de Recebimentos
-		$val = number_format((float)$receitas['vendasAVista']['value'] + $receitas['fiadosPagos']['value'] + $receitas['recebidoTrocas']['value'], 2, '.', '');
+		$val = number_format((float)$receitas['vendasAVista']['value'] + $receitas['fiadosPagos']['value'] + $receitas['recebidoTrocas']['value'] + $receitas['lucroEventos']['value'] + $receitas['patrocinios']['value'], 2, '.', '');
 		$receitas['totalRecebimentos'] = array('label'=>'Total de Recebimentos','value'=>($val ? $val : "0.00"));
 
 		// Total Faturado
@@ -199,6 +215,8 @@ class ReportController extends Controller
 						- (select COALESCE(SUM(valor_pg),0) from tarefa where id_integrante = $integranteID and apagado <> 1)
 						+ (select COALESCE(SUM(valor),0) from investimento where id_integrante = $integranteID and apagado <> 1)
 						+ (select COALESCE(SUM(valor),0) from mov_conta where id_conta_dest = $conta->id and apagado <> 1) 
+						+ (select COALESCE(SUM(lucro),0) from evento where id_conta = $conta->id and apagado <> 1) 
+						+ (select COALESCE(SUM(valor),0) from patrocinio where id_integrante = $integranteID and pg = 1 and apagado <> 1) 
 						as '$conta->nome'");				
 				$row = $command->queryRow();
 				foreach ($row as $key=>$val) {

@@ -10,6 +10,8 @@
  * @property string $local
  * @property string $horario
  * @property double $ingresso
+ * @property double $lucro
+ * @property integer $id_conta
  * @property integer $concluido
  * @property integer $apagado
  */
@@ -31,14 +33,14 @@ class Evento extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nome, data, local, horario', 'required'),
-			array('concluido, apagado', 'numerical', 'integerOnly'=>true),
-			array('ingresso', 'numerical'),
+			array('nome, data, local, horario, id_conta', 'required'),
+			array('concluido, id_conta, apagado', 'numerical', 'integerOnly'=>true),
+			array('ingresso, lucro', 'numerical'),
 			array('nome, local', 'length', 'max'=>240),
 			array('horario', 'length', 'max'=>15),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, nome, data, local, horario, ingresso, concluido, apagado', 'safe', 'on'=>'search'),
+			array('id, nome, data, local, horario, ingresso, lucro, id_conta, concluido, apagado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,6 +52,7 @@ class Evento extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'idConta' => array(self::BELONGS_TO, 'Conta', 'id_conta'),
 		);
 	}
 
@@ -65,6 +68,8 @@ class Evento extends CActiveRecord
 			'local' => 'Local',
 			'horario' => 'Horário',
 			'ingresso' => 'Ingresso',
+			'lucro' => 'Lucro',
+			'id_conta' => 'Conta',
 			'concluido' => 'Concluído',
 			'apagado' => 'Apagado',
 		);
@@ -94,6 +99,8 @@ class Evento extends CActiveRecord
 		$criteria->compare('local',$this->local,true);
 		$criteria->compare('horario',$this->horario,true);
 		$criteria->compare('ingresso',$this->ingresso);
+		$criteria->compare('lucro',$this->lucro);
+		$criteria->compare('id_conta',$this->id_conta);
 		$criteria->compare('concluido',$this->concluido);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('apagado != 1');
@@ -116,6 +123,8 @@ class Evento extends CActiveRecord
 		$criteria->compare('local',$this->local,true);
 		$criteria->compare('horario',$this->horario,true);
 		$criteria->compare('ingresso',$this->ingresso);
+		$criteria->compare('lucro',$this->lucro);
+		$criteria->compare('id_conta',$this->id_conta);
 		$criteria->compare('concluido',$this->concluido);
 		$criteria->compare('apagado',$this->apagado);
 		$criteria->addCondition('concluido = 0');

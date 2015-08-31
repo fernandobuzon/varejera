@@ -30,6 +30,12 @@ $this->menu=array(
 		'local',
 		'horario',
 		'ingresso',
+		'lucro',
+                array(
+                        'label' => 'Conta',
+                        'type' => 'raw',
+                        'value' => $model->idConta->nome
+                ),
 		array(
 			'label' => 'Concluído?',
 			'type' => 'raw',

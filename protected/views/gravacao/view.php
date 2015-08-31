@@ -49,6 +49,6 @@ $this->menu=array(
 <div class='row'>
 <br><center>
 <?php echo CHtml::link('Pagamentos',array('pagamento/admin','id_gravacao'=>"$model->id")); ?> -
-<?php echo CHtml::link('Desenvolvimento',array('desenvolvimento/admin','id_gravacao'=>"$model->id")); ?>
+<?php echo CHtml::link('Desenvolvimento',array('desenv/admin','id_gravacao'=>"$model->id")); ?>
 </center>
 </div>

@@ -153,4 +153,13 @@ class Conta extends CActiveRecord
 			else
 				return null;
 	}
+
+	public function listaContas()
+        {
+		$listaContas = CHtml::listData(Conta::model()->findAll(array('condition'=>'apagado != 1','order'=>'nome')), 'id', 'nome');
+                if($listaContas)
+                        return $listaContas;
+                else
+                        return null;
+        }
 }

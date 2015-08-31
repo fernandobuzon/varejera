@@ -43,6 +43,14 @@ $this->breadcrumbs=array(
 			$integ[$i]['fiado'] = array('label'=>$key, 'type'=>'html', 'value'=>($val ? $val : "0.00"));
 		}
 
+		// Recebido de patrocinios
+		$connection = Yii::app()->db;
+		$command = $connection->createCommand("select COALESCE(SUM(valor),0) as 'Patrocinios receb.' from patrocinio where id_integrante = $integrante->id and pg = 1 and apagado <> 1");
+		$row = $command->queryRow();
+		foreach ($row as $key=>$val) {
+			$integ[$i]['patroc'] = array('label'=>$key, 'type'=>'html', 'value'=>($val ? $val : "0.00"));
+		}
+
 		// Total Faturado
 		$val = number_format((float)$integ[$i]['vendasReceb']['value'] + $integ[$i]['trocasReceb']['value'] + $integ[$i]['fiado']['value'], 2, '.', '');
 		$integ[$i]['faturado'] = array('label'=>'Total Faturado','value'=>$val);
@@ -119,9 +127,17 @@ $this->breadcrumbs=array(
 		foreach ($row as $key=>$val) {
 			$integ[$i]['pagoGrav'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
 		}
-		
+	
+		// Lucros de eventos em conta pessoal
+                $connection = Yii::app()->db;
+                $command = $connection->createCommand("select COALESCE(SUM(lucro),0) as 'Lucro de eventos em Conta' from evento where id_conta = $integrante->id_conta and apagado <> 1");
+                $row = $command->queryRow();
+                foreach ($row as $key=>$val) {
+                        $lucroEvConta = ($val ? $val : "0.00");
+                }
+	
 		// Em caixa
-		$val = number_format((float)$integ[$i]['vendasReceb']['value'] + $integ[$i]['trocasReceb']['value'] - $integ[$i]['despesas']['value'] - $integ[$i]['compras']['value'] - $integ[$i]['transferenciasRep']['value'] + $integ[$i]['transferenciasRec']['value'] - $integ[$i]['pagoGrav']['value'] -$integ[$i]['tarefasPg']['value'] + $integ[$i]['investimentos']['value'], 2, '.', '');
+		$val = number_format((float)$integ[$i]['vendasReceb']['value'] + $integ[$i]['trocasReceb']['value'] - $integ[$i]['despesas']['value'] - $integ[$i]['compras']['value'] - $integ[$i]['transferenciasRep']['value'] + $integ[$i]['transferenciasRec']['value'] - $integ[$i]['pagoGrav']['value'] - $integ[$i]['tarefasPg']['value'] + $integ[$i]['investimentos']['value'], 2, '.', '') + $integ[$i]['patroc']['value'] + $lucroEvConta;
 		$integ[$i]['caixa'] = array('label'=>'Em caixa', 'type'=>'html', 'value'=>'<b>' . $val . '</b>');
 				
 		// R E N D E R

@@ -57,6 +57,18 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'lucro'); ?>
+		<?php echo $form->textField($model,'lucro'); ?>
+		<?php echo $form->error($model,'lucro'); ?>
+	</div>
+
+        <div class="row">
+                <?php echo $form->labelEx($model,'id_conta'); ?>
+                <?php echo CHtml::activeDropDownList($model,'id_conta',Conta::model()->listaContas(),array('empty'=>'Escolha uma conta')); ?>
+                <?php echo $form->error($model,'id_conta'); ?>
+        </div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'concluido'); ?>
 		<?php echo CHtml::activeDropDownList($model,'concluido',array('1'=>'Sim','0'=>'Não')); ?>
 		<?php echo $form->error($model,'concluido'); ?>
