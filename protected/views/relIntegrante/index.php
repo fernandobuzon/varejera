@@ -138,6 +138,7 @@ $this->breadcrumbs=array(
 	
 		// Em caixa
 		$val = number_format((float)$integ[$i]['vendasReceb']['value'] + $integ[$i]['trocasReceb']['value'] - $integ[$i]['despesas']['value'] - $integ[$i]['compras']['value'] - $integ[$i]['transferenciasRep']['value'] + $integ[$i]['transferenciasRec']['value'] - $integ[$i]['pagoGrav']['value'] - $integ[$i]['tarefasPg']['value'] + $integ[$i]['investimentos']['value'], 2, '.', '') + $integ[$i]['patroc']['value'] + $lucroEvConta;
+		$val = money_format ('%i', $val);
 		$integ[$i]['caixa'] = array('label'=>'Em caixa', 'type'=>'html', 'value'=>'<b>' . $val . '</b>');
 				
 		// R E N D E R

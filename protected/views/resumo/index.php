@@ -22,8 +22,19 @@ foreach ($row as $key=>$val) {
 	$geral['totalGastos'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
 }
 
+$command = $connection->createCommand("select COALESCE(SUM(lucro),0) as 'Lucro (no dia)' from evento where id = $id_evento and apagado <> 1");
+$row = $command->queryRow();
+foreach ($row as $key=>$val) {
+	$geral['lucroDia'] = array('label'=>$key,'value'=>($val ? $val : "0.00"));
+}
+
 $geral['diferenca']['label'] = 'Diferença';
 $geral['diferenca']['value'] = $geral['totalPatrocinios']['value'] - $geral['totalGastos']['value'];
+$geral['diferenca']['value'] = money_format('%i', $geral['diferenca']['value']);
+
+$geral['lucroReal']['label'] = 'Lucro real';
+$geral['lucroReal']['value'] = $geral['lucroDia']['value'] - $geral['diferenca']['value'];
+$geral['lucroReal']['value'] = money_format('%i', $geral['lucroReal']['value']);
 
 $command = $connection->createCommand("select COALESCE(SUM(valor),0) as 'Patrocínios já recebidos' from patrocinio where id_evento = $id_evento and pg = 1 and apagado <> 1");
 $row = $command->queryRow();
@@ -45,6 +56,7 @@ foreach ($row as $key=>$val) {
 
 $atual['gastosAPagar']['label'] = 'Gastos a pagar';
 $atual['gastosAPagar']['value'] = $geral['totalGastos']['value'] - $atual['totalGastosQuitados']['value'];
+$atual['gastosAPagar']['value'] = money_format('%i', $atual['gastosAPagar']['value']);
 
 // R E N D E R
 echo '<h3>Total:</h3>';
@@ -81,6 +93,7 @@ foreach ($integrantes as $integrante)
 	
 	$integ[$i]['diferenca']['label'] = 'Diferença';
 	$integ[$i]['diferenca']['value'] = $integ[$i]['totalPatrocinios']['value'] - $integ[$i]['totalGastos']['value'];
+	$integ[$i]['diferenca']['value'] = money_format('%i', $integ[$i]['diferenca']['value']);
 
 	$command = $connection->createCommand("select COALESCE(SUM(valor),0) as 'Patrocínios já recebidos' from patrocinio where id_evento = $id_evento and id_integrante = $integrante->id and pg = 1 and apagado <> 1");
 	$row = $command->queryRow();
@@ -102,6 +115,7 @@ foreach ($integrantes as $integrante)
 
 	$integ[$i]['gastosAPagar']['label'] = 'Gastos a pagar';
 	$integ[$i]['gastosAPagar']['value'] = $integ[$i]['totalGastos']['value'] - $integ[$i]['totalGastosQuitados']['value'];
+	$integ[$i]['gastosAPagar']['value'] = money_format('%i', $integ[$i]['gastosAPagar']['value']);
 	
 	// R E N D E R
 	$this->widget('zii.widgets.CDetailView', array(
