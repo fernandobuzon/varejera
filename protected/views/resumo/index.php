@@ -32,8 +32,8 @@ $geral['diferenca']['label'] = 'Diferença';
 $geral['diferenca']['value'] = $geral['totalPatrocinios']['value'] - $geral['totalGastos']['value'];
 $geral['diferenca']['value'] = money_format('%i', $geral['diferenca']['value']);
 
-$geral['lucroReal']['label'] = 'Lucro real';
-$geral['lucroReal']['value'] = $geral['lucroDia']['value'] - $geral['diferenca']['value'];
+$geral['lucroReal']['label'] = 'Lucro previsto';
+$geral['lucroReal']['value'] = $geral['lucroDia']['value'] + $geral['diferenca']['value'];
 $geral['lucroReal']['value'] = money_format('%i', $geral['lucroReal']['value']);
 
 $command = $connection->createCommand("select COALESCE(SUM(valor),0) as 'Patrocínios já recebidos' from patrocinio where id_evento = $id_evento and pg = 1 and apagado <> 1");

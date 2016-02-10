@@ -23,8 +23,7 @@ class UserIdentity extends CUserIdentity
 			'Buzon'=>'Sarrafo*',
 			'Dim'=>'abc123',
 			'Diegao'=>'abc123',
-			'Bim'=>'abc123',
-			'Andre'=>'abc123',
+			'Pery'=>'abc123',
 		);
 		if(!isset($users[$this->username]))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
